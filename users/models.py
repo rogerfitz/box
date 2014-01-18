@@ -3,13 +3,13 @@ from boxes.models import Box
 from django.contrib.auth.models import AbstractUser
 
 class Profile(models.Model):
-	addr1 = models.CharField(max_length=50, blank=True, null=True)
-	addr2 = models.CharField(max_length=50, blank=True, null=True)
-	city = models.CharField(max_length=40, blank=True, null=True)
-	state = models.CharField(max_length=30, blank=True, null=True)
-	zipcode = models.CharField(max_length=15, blank=True, null=True)
+	addr1 = models.CharField(max_length=50, blank=True, default="")
+	addr2 = models.CharField(max_length=50, blank=True, default="")
+	city = models.CharField(max_length=40, blank=True, default="")
+	state = models.CharField(max_length=30, blank=True, default="")
+	zipcode = models.CharField(max_length=15, blank=True, default="")
 	
-	date_of_birth = models.DateField(null=True)
+	date_of_birth = models.DateField(blank=True, null=True)
 	
 	first_name = models.CharField(max_length=30)
 	last_name = models.CharField(max_length=30)

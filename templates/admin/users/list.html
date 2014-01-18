@@ -2,10 +2,20 @@
 
 {% block body %}
 <table border="1">
-	<tr><td>Name</td><td>City</td><td>State</td><td>Box to Ship</td><td>Delete</td></tr>
-{% for p in profiles %}
-	<tr><td>{{ p.first_name }} {{ p.last_name }}</td><td>{{ p.city }}</td><td>{{ p.state }}</td><td>{% for img_url in p.box_to_ship.getImages %}<img src={{ img_url }} height="200" width="150"> {% empty %}<a href={% url 'assignBox' p.id %}>Assign</a>{% endfor %}</td>
-	<td><a href={% url 'deleteUser' p.id %}>Delete</a></tr>
+	<tr><td>Name</td><td>Address</td><td>Box to Ship</td><td>Price</td><td>Actions</td><td>Delete</td></tr>
+{% for u in users %}
+	<tr><td>{{ u.profile.first_name }} {{ u.profile.last_name }}</td><td>{{ u.profile.addr1 }}<br>{% if "" == u.profile.addr2 %}{{ u.profile.addr2 }}<br>{% endif %}{{ u.profile.city }}, {{ u.profile.state }}</td><td>{% for i in u.profile.box_to_ship.getPreview %}<a href={{ i.1 }}><img src={{ i.0 }} height="200" width="150"></a>{% empty %}<a href="{% url 'assignBox' u.profile.id %}">Assign</a>{% endfor %}</td><td>${{ u.profile.box_to_ship.price }}</td>
+	<td>
+	<select>
+	  <option><center>----------</center></option>
+	  <option value="paid">Mark as Paid</option>
+	  <option value="shipped">Mark as Shipped</option>
+	  <option value="customBox">Assign Custom Box</option>
+	  <option value="delete">Delete User</option>
+	</select>
+	</td>
+	
+	<td><a href={% url 'deleteUser' u.id %}>Delete</a></tr>
 {% endfor %}
 </table>
 <a href={% url 'addUser' %}>Add</a>

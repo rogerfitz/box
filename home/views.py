@@ -47,6 +47,7 @@ def editProfile(request):
 	profile = (User.objects.get(id=request.user.id)).profile
 	if request.method == 'POST':
 		form = FullProfileForm(request.POST, instance=profile)
+		print form.data
 		form.save()
 		return redirect('/')
 	form = FullProfileForm(instance=profile)

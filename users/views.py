@@ -9,16 +9,16 @@ from django.contrib.auth import authenticate, login
 
 @user_passes_test(lambda u: u.is_superuser, login_url='/')
 def index(request):
-	profiles = Profile.objects.order_by('last_name')
-	for p in profiles:
-		print p.box_to_ship
-	return render(request, 'admin/users/list.html', {'profiles': profiles})
+	#sort by state
+	users = User.objects.exclude(is_superuser=True)
+	return render(request, 'admin/users/list.html', {'users': users})
 
 @user_passes_test(lambda u: u.is_superuser, login_url='/')
 def addUser(request):
 	if request.method == 'POST':
 		form = UserForm(request.POST)
 		form = form.save(commit=False)
+		print form.data
 		form.save()
 		return redirect('/users/')
 	else:
@@ -29,7 +29,7 @@ def addUser(request):
 @user_passes_test(lambda u: u.is_superuser, login_url='/')
 def deleteUser(request, user_id):
 	User.objects.get(id=user_id).delete()
-	return redirect('/users/')
+	return redirect('/boxman/users/')
 
 @user_passes_test(lambda u: u.is_superuser, login_url='/')
 def assignBox(request, prof_id):

@@ -13,9 +13,8 @@ class Box(models.Model): #move to seperate app
 			s+=product.name+', '
         	return s
 
-	def getImages(self):
-		s=''
+	def getPreview(self):
+		s=[]
 		for product in self.products.all() :
-			s+=product.image_url+','
-		s = s.split(',')
+			s.append((product.image_url, product.url))
         	return s
