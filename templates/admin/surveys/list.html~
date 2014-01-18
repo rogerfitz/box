@@ -1,0 +1,12 @@
+{% extends 'admin/base.html' %}
+
+{% block body %}
+<table border="1">
+	<tr><td>Survey</td><td>Price</td></tr>
+{% for s in surveys %}
+	<tr><td>{{ s.rating }}</td>
+	<td><a href=% url 'deleteProduct' p.id %>Delete</a></tr>
+{% endfor %}
+</table>
+<a href={% url 'createSurvey' %}>Add</a>
+{% endblock %}

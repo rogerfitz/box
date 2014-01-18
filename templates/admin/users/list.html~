@@ -1,0 +1,12 @@
+{% extends 'admin/base.html' %}
+
+{% block body %}
+<table border="1">
+	<tr><td>Name</td><td>City</td><td>State</td><td>Box to Ship</td><td>Delete</td></tr>
+{% for p in profiles %}
+	<tr><td>{{ p.username }}{{ p.first_name }} {{ p.last_name }}</td><td>{{ p.city }}</td><td>{{ p.state }}</td><td>{% for img_url in p.box_to_ship.getImages %}<img src={{ img_url }} height="200" width="150"> {% empty %}<a href={% url 'assignBox' p.id %}>Assign</a>{% endfor %}</td>
+	<td><a href={% url 'deleteUser' p.id %}>Delete</a></tr>
+{% endfor %}
+</table>
+<a href={% url 'addUser' %}>Add</a>
+{% endblock %}

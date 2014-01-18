@@ -1,0 +1,13 @@
+{% extends 'admin/base.html' %}
+
+{% block body %}
+<table border="1">
+	<tr><td>Name</td><td>Price</td><td>Category</td><td>Image</td><td>Item Count</td><td>Delete</td></tr>
+{% for p in products %}
+	<tr><td>{{ p.name }}</td><td>${{ p.price }}</td><td>{{ p.category }}</td><td><a href={{ p.url }} target="_blank"><img src={{ p.image_url }} height="200" width="150"></a></td>
+	<td>p.item_count</td>
+	<td><a href={% url 'deleteProduct' p.id %}>Delete</a></tr>
+{% endfor %}
+</table>
+<a href={% url 'addProduct' %}>Add</a>
+{% endblock %}

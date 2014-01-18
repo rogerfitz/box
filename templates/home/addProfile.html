@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block body %}
+Looks like you don't have an account. Make one here to get started. 
+<form method="post" action="">{% csrf_token %}
+    {{ form.as_p }}
+<p>We do not accept credit cards yet. For now pay Matteo directly and he will enter you in.</p>
+<input type="submit" value="Submit" />
+</form>
+{% endblock %}
