@@ -10,4 +10,7 @@ urlpatterns = patterns('',
     url(r'^boxman/', views.index, name='index'),
     url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'users/login.html'}),
     url(r'^logout/$', 'users.views.logout'),
+    url(r'^captcha/', include('captcha.urls')),
+    
 )
+

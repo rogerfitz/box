@@ -7,7 +7,9 @@ from users.models import User, Profile
 from products.models import Product
 
 def index(request):
+	print 'hi'
 	if request.user.is_authenticated():
+		print 'auth'
                 if request.user.is_superuser:
 			return redirect('/boxman/')
 		user = User.objects.get(id=request.user.id)
@@ -47,7 +49,6 @@ def editProfile(request):
 	profile = (User.objects.get(id=request.user.id)).profile
 	if request.method == 'POST':
 		form = FullProfileForm(request.POST, instance=profile)
-		print form.data
 		form.save()
 		return redirect('/')
 	form = FullProfileForm(instance=profile)

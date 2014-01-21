@@ -1,8 +1,10 @@
 from django.contrib.auth.forms import UserCreationForm
 from users.models import User, Profile
 from django.forms import ModelForm
+from captcha.fields import CaptchaField
 
 class UserForm(UserCreationForm):
+	captcha = CaptchaField()
 	class Meta:
 		model = User
 		fields = ('username',  'password1', 'password2')

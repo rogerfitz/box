@@ -3,10 +3,11 @@
 {% block body %}
 <div class="row-fluid">
 {% for box in boxes %}
+<h1 class='text-center'>Past Boxes</h1>
 <table border="1">
-	<tr><td>Price</td><td>Products</td><td></td></tr>
+	<tr><td>Date</td><td>Products</td><td></td></tr>
 <tr>
-  <td>${{ box.price }}</td>
+  <td>{{ box.date_modified }}</td>
   <td>
   {% for p in box.products.all %}
   	<a href={{ p.url }} target="_blank"><img src={{ p.image_url }} height="200" width="150"></a>

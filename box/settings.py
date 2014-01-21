@@ -1,7 +1,7 @@
 # Django settings for box project.
 import os
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 BASE_DIR = "/home/user/projects/box/"
 
@@ -25,7 +25,7 @@ DATABASES = {
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost']
 
 AUTH_USER_MODEL = 'users.user'
 
@@ -136,7 +136,8 @@ INSTALLED_APPS = (
     'products',
     'boxes',
     'users',
-    'surveys',
+    'attr',
+    'captcha',
     'south',
     
     # Uncomment the next line to enable the admin:
@@ -199,4 +200,6 @@ PAYMENTS_PLANS = {
         "interval": "month",
     },
     }
+
+CAPTCHA_FONT_SIZE = 60
 

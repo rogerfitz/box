@@ -6,11 +6,26 @@ from products.models import Product
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.views import logout_then_login
 from django.contrib.auth import authenticate, login
+from django.http import HttpResponse
 
 @user_passes_test(lambda u: u.is_superuser, login_url='/')
 def index(request):
 	#sort by state
 	users = User.objects.exclude(is_superuser=True)
+	if request.method == 'POST':
+		action, prof_id = request.POST['data'].split('.')
+		prof = Profile.objects.get(id=prof_id)
+		if action == 'shipped':
+			prof.ship()
+		elif action == 'customBox':
+			print 'hi'
+			return HttpResponse('boxman/users/assignBox/'+str(prof_id)+'/', content_type="text/plain")
+		elif action == 'paid':
+			prof.pay()
+		elif action == 'delete':
+			return deleteUser(request, prof.user.id)
+		else:
+			print action+' error!!!!'
 	return render(request, 'admin/users/list.html', {'users': users})
 
 @user_passes_test(lambda u: u.is_superuser, login_url='/')
@@ -28,6 +43,7 @@ def addUser(request):
 
 @user_passes_test(lambda u: u.is_superuser, login_url='/')
 def deleteUser(request, user_id):
+	(User.objects.get(id=user_id).profile).delete()
 	User.objects.get(id=user_id).delete()
 	return redirect('/boxman/users/')
 
@@ -49,7 +65,6 @@ def assignBox(request, prof_id):
 			box.products.add(p)
 
 		prof.box_to_ship = box
-		print prof.box_to_ship
 		prof.save()
 		
 		return redirect('/boxman/users/')
@@ -60,11 +75,10 @@ def logout(request):
 
 def register(request):
     if request.method == 'POST':
-        form = UserForm(request.POST)
+	form = UserForm(request.POST)
         if form.is_valid():
-		form = UserForm(request.POST)
 		user = form.save()
-		user =  authenticate(username=request.POST['username'], password=request.POST['password1'])
+		user =  authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
 		login(request, user)		
             	return redirect('/')
     else:

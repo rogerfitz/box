@@ -23,10 +23,22 @@ class Profile(models.Model):
 	def __unicode__(self):
         	return self.first_name+' '+self.last_name
 
+	def ship(self):
+		if self.paid is True:
+		    #if self.current_box == None:
+			self.paid = False
+			self.boxes.add(self.current_box)
+			self.current_box=  self.box_to_ship
+			self.box_to_ship = None
+			self.save()
+			return self
+		else:
+			return self.first_name+' '+self.last_name+' needs to pay!'
+	
+	def pay(self):
+		self.paid = True
+		self.save()
+		return self
+
 class User(AbstractUser):
 	profile = models.OneToOneField(Profile, related_name='profile', unique=True, blank=True, null=True)
-
-class Attribute(models.Model):
-	key = models.CharField(max_length=30)
-	val = models.CharField(max_length=50)
-	prof_id = models.IntegerField()

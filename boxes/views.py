@@ -6,11 +6,10 @@ from django.contrib.auth.decorators import user_passes_test
 
 @user_passes_test(lambda u: u.is_superuser, login_url='/')
 def index(request):
-	boxes= Box.objects.order_by('price')
+	boxes= Box.objects.order_by('price')#.distinct('price')Doesn't work in mysql
 	for box in boxes:
 		products = box.products.all()
-		for product in products:
-			print product.name
+
 	bz = []
 	for box in boxes:
 		b = Box()
