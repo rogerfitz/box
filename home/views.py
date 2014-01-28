@@ -5,9 +5,12 @@ from boxes.models import Box
 from users.forms import UserForm, ProfileForm, FullProfileForm
 from users.models import User, Profile
 from products.models import Product
+from box.settings import poop
+
+
 
 def index(request):
-	print 'hi'
+	print 'a'+poop+'a'
 	if request.user.is_authenticated():
 		print 'auth'
                 if request.user.is_superuser:
@@ -17,10 +20,7 @@ def index(request):
 			return addProfile(request)
 
 		boxes= user.profile.boxes.order_by('price')
-		for box in boxes:
-			products = box.products.all()
-			for product in products:
-				print product.name
+
 		bz = []
 		for box in boxes:
 			b = Box()
@@ -49,8 +49,9 @@ def editProfile(request):
 	profile = (User.objects.get(id=request.user.id)).profile
 	if request.method == 'POST':
 		form = FullProfileForm(request.POST, instance=profile)
-		form.save()
-		return redirect('/')
+		if form.is_valid():
+			form.save()
+			return redirect('/')
 	form = FullProfileForm(instance=profile)
 	return render(request, 'home/editProfile.html', {'form': form})
 

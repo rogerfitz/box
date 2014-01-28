@@ -7,5 +7,8 @@ class Attr(models.Model):
 class ProfileAttr(Attr):
 	prof_id = models.IntegerField()
 
+class ProductAttr(Attr):
+	product_id = models.IntegerField()
+
 class BoxAttr(Attr):
 	box_id = models.IntegerField()

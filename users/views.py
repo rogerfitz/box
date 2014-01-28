@@ -18,7 +18,6 @@ def index(request):
 		if action == 'shipped':
 			prof.ship()
 		elif action == 'customBox':
-			print 'hi'
 			return HttpResponse('boxman/users/assignBox/'+str(prof_id)+'/', content_type="text/plain")
 		elif action == 'paid':
 			prof.pay()
@@ -26,6 +25,7 @@ def index(request):
 			return deleteUser(request, prof.user.id)
 		else:
 			print action+' error!!!!'
+		return redirect('boxman/users')
 	return render(request, 'admin/users/list.html', {'users': users})
 
 @user_passes_test(lambda u: u.is_superuser, login_url='/')
@@ -87,6 +87,7 @@ def register(request):
         'form': form,
     })
 
+@user_passes_test(lambda u: u.is_superuser, login_url='/')
 def profile(request):
 	users = User.objects.order_by('username')
 	return render(request, 'users/list.html', {'users': users})
