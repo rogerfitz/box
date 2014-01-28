@@ -4,11 +4,16 @@ from box.settings import boxFeedback
 from attr.models import BoxAttr
 from django.db.models.query import QuerySet
 
+class BoxFeedback(models.Model):
+	feedback = models.CharField(max_length=20, choices=boxFeedback)
+	user = models.OneToOneField('users.User')
+
 class Box(models.Model): #move to seperate app
 	products = models.ManyToManyField(Product)
 	price = models.DecimalField(max_digits=5, decimal_places=2)
-	feedback = models.CharField(max_length=20, choices=boxFeedback)#if felt cheap boost next package
+	#if felt cheap boost next package
 	date_added = models.DateField(auto_now_add=True)
+	feedback = models.ManyToManyField(BoxFeedback)
 	date_modified = models.DateField(auto_now=True)
 	
 
@@ -43,5 +48,3 @@ class Box(models.Model): #move to seperate app
 				return False
 
 		return True
-
-

@@ -11,10 +11,13 @@ from django.http import HttpResponse
 @user_passes_test(lambda u: u.is_superuser, login_url='/')
 def index(request):
 	#sort by state
-	users = User.objects.exclude(is_superuser=True)
+	users = User.objects.exclude(is_superuser=True).exclude(profile_id__isnull=True)
+	for u in users:
+		print u.username
 	if request.method == 'POST':
 		action, prof_id = request.POST['data'].split('.')
 		prof = Profile.objects.get(id=prof_id)
+		print action
 		if action == 'shipped':
 			prof.ship()
 		elif action == 'customBox':
@@ -33,7 +36,6 @@ def addUser(request):
 	if request.method == 'POST':
 		form = UserForm(request.POST)
 		form = form.save(commit=False)
-		print form.data
 		form.save()
 		return redirect('/users/')
 	else:
@@ -44,7 +46,7 @@ def addUser(request):
 @user_passes_test(lambda u: u.is_superuser, login_url='/')
 def deleteUser(request, user_id):
 	(User.objects.get(id=user_id).profile).delete()
-	User.objects.get(id=user_id).delete()
+	#User.objects.get(id=user_id).delete()
 	return redirect('/boxman/users/')
 
 @user_passes_test(lambda u: u.is_superuser, login_url='/')

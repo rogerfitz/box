@@ -5,14 +5,9 @@ from boxes.models import Box
 from users.forms import UserForm, ProfileForm, FullProfileForm
 from users.models import User, Profile
 from products.models import Product
-from box.settings import poop
-
-
 
 def index(request):
-	print 'a'+poop+'a'
 	if request.user.is_authenticated():
-		print 'auth'
                 if request.user.is_superuser:
 			return redirect('/boxman/')
 		user = User.objects.get(id=request.user.id)
