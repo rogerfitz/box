@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
 {% block body %}
-<form method="post" action="">{% csrf_token %}
-    {{ form.as_p }}
+
+<h5 class='text-left'>Make your username your email</h5>
+<form method="post" action="" class='text-left'>{% csrf_token %}
+    {{ form.as_p}}
 <input type="submit" value="Create the account" />
 </form>
 {% endblock %}

@@ -8,7 +8,7 @@ from django.contrib.auth.views import logout_then_login
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 
-@user_passes_test(lambda u: u.is_superuser, login_url='/')
+@user_passes_test(lambda u: u.is_superuser, login_url='/login')
 def index(request):
 	#sort by state
 	users = User.objects.exclude(is_superuser=True).exclude(profile_id__isnull=True)
@@ -31,7 +31,7 @@ def index(request):
 		return redirect('boxman/users')
 	return render(request, 'admin/users/list.html', {'users': users})
 
-@user_passes_test(lambda u: u.is_superuser, login_url='/')
+@user_passes_test(lambda u: u.is_superuser, login_url='/login')
 def addUser(request):
 	if request.method == 'POST':
 		form = UserForm(request.POST)
@@ -43,13 +43,13 @@ def addUser(request):
 
 	return render(request, 'admin/users/add.html', {'form': form})
 
-@user_passes_test(lambda u: u.is_superuser, login_url='/')
+@user_passes_test(lambda u: u.is_superuser, login_url='/login')
 def deleteUser(request, user_id):
 	(User.objects.get(id=user_id).profile).delete()
 	#User.objects.get(id=user_id).delete()
 	return redirect('/boxman/users/')
 
-@user_passes_test(lambda u: u.is_superuser, login_url='/')
+@user_passes_test(lambda u: u.is_superuser, login_url='/login')
 def assignBox(request, prof_id):
 	products= Product.objects.all()
 	if request.method == 'POST':
@@ -82,14 +82,14 @@ def register(request):
 		user = form.save()
 		user =  authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
 		login(request, user)		
-            	return redirect('/')
+            	return redirect('/home')
     else:
         form = UserForm()
     return render(request, "users/register.html", {
         'form': form,
     })
 
-@user_passes_test(lambda u: u.is_superuser, login_url='/')
+@user_passes_test(lambda u: u.is_superuser, login_url='/login')
 def profile(request):
 	users = User.objects.order_by('username')
 	return render(request, 'users/list.html', {'users': users})

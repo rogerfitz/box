@@ -144,7 +144,7 @@ INSTALLED_APPS = (
     #'django.contrib.admindocs',
 )
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/home'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -175,8 +175,8 @@ LOGGING = {
     }
 }
 
-prodFeedback = (('like', 'like') , ('ok', 'ok'), ('dislike', 'dislike'), ('already have', 'Already have this or something like it'))
-boxFeedback = (('like', 'like') , ('ok', 'ok'), ('dislike', 'dislike'), ('small', 'Felt cheap'))
+prodFeedback = (('like', 'Like') , ('ok', 'Ok'), ('dislike', 'Dislike'), ('already have', 'Already have this or something like it'))
+boxFeedback = (('like', 'Like') , ('ok', 'Ok'), ('dislike', 'Dislike'), ('small', 'Felt small'))
 
 CAPTCHA_FONT_SIZE = 60
 

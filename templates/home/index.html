@@ -2,7 +2,7 @@
 
 {% block body %}
 <div class="row-fluid">
-{% for box in boxes %}
+{% for box in user.profile.boxes.all %}
 <h1 class='text-center'>Past Boxes</h1>
 <table border="1">
 	<tr><td>Date</td><td>Products</td><td></td></tr>
@@ -14,14 +14,57 @@
   {% endfor %}
   </td>
 </tr>
-{% empty %}
+{% endfor %}
+{% with box=user.profile.current_box %}
+{% if box != None %}
+<h1 class='text-center'>Current Box</h1>
+<table border="1">
+	<tr><td>Date</td></tr>
+<tr>
+  <td>{{ box.date_modified }}</td>
+  {% for p in box.products.all %}
+  <td>
+  	<a href={{ p.url }} target="_blank"><img src={{ p.image_url }} height="200" width="150"></a>
+  </td>
+  {% endfor %}
+  <td>	<select onchange="getval(this);">
+	  <option><center>----------</center></option>
+	  {% for option in boxFeedback %}
+	  <option value='box.{{ box.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+	  {% endfor %}
+	</select>
+  </td>
+  </tr><tr><td></td>
+  {% for p in box.products.all %}
+  <td>
+  	Choose
+  </td>
+  {% endfor %}
+</tr>
+{% else %}
 {% if user.profile.paid %}
-{{ user.profile }}, thanks for ordering. You're personalized package will be delivered Monday the 27th of January. In the meantime, enjoy this gif.
+<h3>{{ user.profile }}, thanks for ordering. You're personalized package will be delivered next week, the first week of February. In the meantime, enjoy this gif. </h3>
 <div class="row text-center"><img src='http://media.giphy.com/media/76dXlFZZEqNH2/giphy.gif'></div>
 {% else %}
-Thanks for making an account. Our records indicate that you haven't paid yet. Ensure that you've paid Matteo mhoch2@illinois.edu
+{% if user.profile.city == '' %}
+<h3>Please add your shipping information</h3>
+{% else %}
+<h3>Thanks for making an account. Our records indicate that you haven't paid yet. Ensure that you've paid Matteo mhoch2@illinois.edu</h3>
 {% endif %}
-{% endfor %}
+{% endif %}
+{% endif %}
+{% endwith %}
 </table>
 </div>
+<script type="text/javascript">
+    function getval(sel) {
+	$.ajax({
+	  type: "POST",
+	  url: '/',
+	  data: {'data': sel.value, 'csrfmiddlewaretoken': '{{csrf_token}}'},
+	  dataType: "json",
+	  success: sel.value,
+	});
+    }
+</script>
 {% endblock %}
