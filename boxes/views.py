@@ -6,16 +6,12 @@ from django.contrib.auth.decorators import user_passes_test
 
 @user_passes_test(lambda u: u.is_superuser, login_url='/')
 def index(request):
-	boxes= Box.objects.order_by('price')#.distinct('price')Doesn't work in mysql
-	for box in boxes:
-		products = box.products.all()
-
-	bz = []
-	for box in boxes:
-		b = Box()
-		b.product=box.products.all()
-		b.id=box.id
-		bz.append(b)
+	b = Box.objects.order_by('price')
+	boxes =[]
+	for box in b:
+		box.product=box.products.all()
+		boxes.append(box)
+		
 	return render(request, 'admin/boxes/boxes.html', {'boxes': boxes})
 
 @user_passes_test(lambda u: u.is_superuser, login_url='/')
@@ -29,12 +25,13 @@ def addBox(request):
 			p = Product.objects.get(id=int(product_id))
 			box.price += float(p.price)
 			products.append(p)
-		box.save()
 
-		for p in products:
-			box.products.add(p)
-		
-		return redirect('/boxman/boxes/')
+		if box.distinct(products):
+			box.save()
+			for p in products:
+				box.products.add(p)	
+			return redirect('/boxman/boxes/')
+		products= Product.objects.all()
 	return render(request, 'admin/boxes/products.html', {'products': products})
 
 @user_passes_test(lambda u: u.is_superuser, login_url='/')

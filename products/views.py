@@ -12,7 +12,14 @@ def index(request):
 def addProduct(request):
 	if request.method == 'POST':
 		form = ProductForm(request.POST)
-		form.save()
+		product = form.save(commit=False)
+		try:
+			p = Product.objects.get(name=product.name)
+			if p.items_per_box != product.items_per_box:
+				product.save()
+		except:
+			product.save()
+		
 		return redirect('/products/')
 	else:
 		form = ProductForm()

@@ -5,42 +5,37 @@ from boxes.models import Box
 from users.forms import UserForm, ProfileForm, FullProfileForm
 from users.models import User, Profile
 from products.models import Product
+from box.settings import boxFeedback
 
+@login_required
 def index(request):
-	print 'hi'
-	if request.user.is_authenticated():
-		print 'auth'
-                if request.user.is_superuser:
-			return redirect('/boxman/')
-		user = User.objects.get(id=request.user.id)
-		if user.profile is None:
-			return addProfile(request)
+	if request.user.is_superuser:
+		return redirect('/boxman/')
+	user = User.objects.get(id=request.user.id)
+	if user.profile is None:
+		return addProfile(request)
 
-		boxes= user.profile.boxes.order_by('price')
-		for box in boxes:
-			products = box.products.all()
-			for product in products:
-				print product.name
-		bz = []
-		for box in boxes:
-			b = Box()
-			b.product=box.products.all()
-			b.id=box.id
-			bz.append(b)
-		
-		return render(request, 'home/index.html', {'boxes': boxes, 'user': user})
-	return redirect('/login/')
+	if request.method == 'POST':
+		try:
+			obj, id, feedback = request.POST['data'].split('.')
+			if obj == "box":
+				pass#Box.
+		except:
+			pass
+
+		return render(request, 'home/index.html', {'user': user, 'boxFeedback': boxFeedback})
+	return render(request, 'home/index.html')
 
 @login_required
 def addProfile(request):
 	if request.method == 'POST':
 		user = User.objects.get(id=request.user.id)		
-		form = ProfileForm(request.POST)
+		form = FullProfileForm(request.POST)
 		user.profile = form.save()
 		user.save()
 		return index(request)
 	else:
-		form = ProfileForm()
+		form = FullProfileForm()
 
 	return render(request, 'home/addProfile.html', {'form': form})
 
@@ -49,8 +44,12 @@ def editProfile(request):
 	profile = (User.objects.get(id=request.user.id)).profile
 	if request.method == 'POST':
 		form = FullProfileForm(request.POST, instance=profile)
-		form.save()
-		return redirect('/')
+		if form.is_valid():
+			user = User.objects.get(id=request.user.id)		
+			form = ProfileForm(request.POST)
+			user.profile = form.save()
+			user.save()
+			return redirect('/home')
 	form = FullProfileForm(instance=profile)
 	return render(request, 'home/editProfile.html', {'form': form})
 

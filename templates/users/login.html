@@ -1,14 +1,13 @@
 {% extends "base.html" %}
 
 {% block body %}
-
 <div id="login" class="login">
   <form class="form-horizontal" name="LoginForm" action="{% url 'django.contrib.auth.views.login' %}" method="post">
     {% csrf_token %}
     <div class="control-group">
-      <label class="control-label" for="username">Username</label>
+      <label class="control-label" for="username">Email</label>
       <div class="controls">
-	<input type="text" id="username" name="username"  placeholder="Username">
+	<input type="text" id="username" name="username"  class="text-input" placeholder="Email">
       </div>
     </div>
     <div class="control-group">
@@ -20,7 +19,7 @@
     <div class="control-group">
       <div class="controls">
 	<button type="submit" class="btn">Login</button>
-	<a href="{% url 'users.views.register' %}">Create Account</a>
+	<a class="btn" href="{% url 'users.views.register' %}">Create Account</a>
       </div>
     </div>
   </form>

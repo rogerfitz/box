@@ -3,7 +3,7 @@ import os
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
-BASE_DIR = "/home/user/projects/box/"
+BASE_DIR = "/home/ubuntu/projects/box/"
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -16,8 +16,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'box',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': 'root',
-        'PASSWORD': '',
+        'USER': 'theoracle',
+        'PASSWORD': '5|_|nburns',
         'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
     }
@@ -25,7 +25,7 @@ DATABASES = {
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['.thenicepackage.com', '.thenicepackage.com.']
 
 AUTH_USER_MODEL = 'users.user'
 
@@ -86,7 +86,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = ''
+SECRET_KEY = 'aq3lpz23_vqy@02(+3^8k8_+7w%chstavs(1ymt+gc$)$kyjr*'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -146,7 +146,7 @@ INSTALLED_APPS = (
     #'django.contrib.admindocs',
 )
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/home'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
@@ -177,7 +177,9 @@ LOGGING = {
     }
 }
 
-feedback = (('like', 'like') , ('ok', 'ok'), ('dislike', 'dislike'))
+
+prodFeedback = (('like', 'Like') , ('ok', 'Ok'), ('dislike', 'Dislike'), ('already have', 'Already have this or something like it'))
+boxFeedback = (('like', 'Like') , ('ok', 'Ok'), ('dislike', 'Dislike'), ('small', 'Felt small'))
 
 STRIPE_SECRET_KEY = 'sk_test_'
 STRIPE_PUBLIC_KEY = 'pk_test_'

@@ -9,7 +9,7 @@ class Profile(models.Model):
 	state = models.CharField(max_length=30, blank=True, default="")
 	zipcode = models.CharField(max_length=15, blank=True, default="")
 	
-	date_of_birth = models.DateField(blank=True, null=True)
+	date_of_birth = models.DateField(blank=True, null=True, help_text='Date of Birth')
 	
 	first_name = models.CharField(max_length=30)
 	last_name = models.CharField(max_length=30)
@@ -25,10 +25,10 @@ class Profile(models.Model):
 
 	def ship(self):
 		if self.paid is True:
-		    #if self.current_box == None:
 			self.paid = False
-			self.boxes.add(self.current_box)
-			self.current_box=  self.box_to_ship
+			if self.current_box is not None:
+				self.boxes.add(self.current_box)
+			self.current_box = self.box_to_ship
 			self.box_to_ship = None
 			self.save()
 			return self
