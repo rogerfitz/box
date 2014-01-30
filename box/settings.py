@@ -5,12 +5,6 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 BASE_DIR = "/home/ubuntu/projects/box/"
 
-ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
-)
-
-MANAGERS = ADMINS
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -22,6 +16,37 @@ DATABASES = {
         'PORT': '',                      # Set to empty string for default.
     }
 }
+
+STRIPE_SECRET_KEY = 'sk_test_',
+STRIPE_PUBLIC_KEY = 'pk_test_',
+
+PAYMENTS_PLANS = {
+    "monthly": {
+        "stripe_plan_id": "college-men",
+        "name": "Personalized Care Package",
+        "description": "A monthly care package by college guys for college guys",
+        "price": 20,
+        "currency": "usd",
+        "interval": "month"
+    },
+    "monthly-discount": {
+        "stripe_plan_id": "college-men-discount",
+        "name": "Personalized Care Package (Discount)",
+        "description": "A monthly care package by college guys for college guys",
+        "price": 10,
+        "currency": "usd",
+        "interval": "month",
+    },
+    },
+
+# Make this unique, and don't share it with anybody.
+SECRET_KEY = 'aq3lpz23_vqy@02(+3^8k8_+7w%chstavs(1ymt+gc$)$kyjr*'
+
+ADMINS = (
+    # ('Your Name', 'your_email@example.com'),
+)
+
+MANAGERS = ADMINS
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
@@ -84,9 +109,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
-
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'aq3lpz23_vqy@02(+3^8k8_+7w%chstavs(1ymt+gc$)$kyjr*'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -177,31 +199,8 @@ LOGGING = {
     }
 }
 
-
+CAPTCHA_FONT_SIZE = 60
 prodFeedback = (('like', 'Like') , ('ok', 'Ok'), ('dislike', 'Dislike'), ('already have', 'Already have this or something like it'))
 boxFeedback = (('like', 'Like') , ('ok', 'Ok'), ('dislike', 'Dislike'), ('small', 'Felt small'))
 
-STRIPE_SECRET_KEY = 'sk_test_'
-STRIPE_PUBLIC_KEY = 'pk_test_'
-
-PAYMENTS_PLANS = {
-    "monthly": {
-        "stripe_plan_id": "college-men",
-        "name": "Personalized Care Package",
-        "description": "A monthly care package by college guys for college guys",
-        "price": 20,
-        "currency": "usd",
-        "interval": "month"
-    },
-    "monthly-discount": {
-        "stripe_plan_id": "college-men-discount",
-        "name": "Personalized Care Package (Discount)",
-        "description": "A monthly care package by college guys for college guys",
-        "price": 10,
-        "currency": "usd",
-        "interval": "month",
-    },
-    }
-
-CAPTCHA_FONT_SIZE = 60
-
+from custom_settings import * #set secret key and custom database if needed in a file box/box/custom_settings.py
