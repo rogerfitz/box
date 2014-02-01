@@ -59,7 +59,7 @@ def assignBox(request, prof_id):
 		box.price = 0.0
 		for product_id in request.POST.getlist('id'):
 			p = Product.objects.get(id=int(product_id))
-			box.price += float(p.price)
+			box.price += float(p.price_per_box)
 			products.append(p)
 		box.save()
 
