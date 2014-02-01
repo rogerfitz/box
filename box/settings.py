@@ -9,7 +9,6 @@ MANAGERS = ADMINS
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = ['localhost']
 
 AUTH_USER_MODEL = 'users.user'
 
@@ -158,5 +157,7 @@ prodFeedback = (('like', 'Like') , ('ok', 'Ok'), ('dislike', 'Dislike'), ('alrea
 boxFeedback = (('like', 'Like') , ('ok', 'Ok'), ('dislike', 'Dislike'), ('small', 'Felt small'))
 
 CAPTCHA_FONT_SIZE = 60
+
+
 
 from custom_settings import * #set secret key and custom database if needed in a file box/box/custom_settings.py

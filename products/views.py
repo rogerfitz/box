@@ -16,6 +16,7 @@ def addProduct(request):
 		if form.is_valid():
 			print request.POST
 			product = form.save(commit=False)
+			print product.price
 			product.unit_price = product.price*product.items_in_box/product.items_per_purchase
 			try:
 				p = Product.objects.get(name=product.name)
