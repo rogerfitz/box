@@ -12,3 +12,16 @@ class ProductAttr(Attr):
 
 class BoxAttr(Attr):
 	box_id = models.IntegerField()
+
+class Vertical(models.Model):
+	name = models.CharField(max_length=50)
+
+	def __unicode__(self):
+		return self.name
+
+class ProductType(models.Model):
+	vertical = models.ForeignKey(Vertical)
+	name = models.CharField(max_length=50)
+
+	def __unicode__(self):
+		return self.name

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class = "span4">
+Verticals
+<table border="1">
+	<tr><td>Name</td></tr>
+{% for v in verticals %}
+<tr>
+  <td>{{ v.name }}</td>
+  <td><a href={% url 'deleteVertical' v.id %}>Delete</a></td>
+</tr>
+{% endfor %}
+</table>
+</div>
+<div class = "span4">
+Categories
+<table border="1">
+<tr><td>Vertical</td><td>Name</tr>
+{% for t in types %}
+<tr>
+  <td>{{ t.vertical }}</td>
+  <td>{{ t.name }}</td>
+  <td><a href={% url 'deleteType' t.id %}>Delete</a></td>
+</tr>
+{% endfor %}
+</table>
+<a href={% url 'addType' %}>Add</a>
+</div>
+{% endblock %}
