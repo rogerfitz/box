@@ -31,6 +31,21 @@ def addProduct(request):
 	return render(request, 'admin/products/add.html', {'form': form})
 
 @user_passes_test(lambda u: u.is_superuser, login_url='/')
+def editProduct(request, product_id):
+	product = Product.objects.get(id=product_id)
+	if request.method == 'POST':
+		form = ProductForm(request.POST, instance=product)
+		if form.is_valid():		
+			form = ProductForm(request.POST)
+			product.price_per_box = product.price*product.items_in_box/product.items_per_purchase
+			form.save()
+			return redirect('/boxman/products/')
+
+	form = ProductForm(instance=product)
+	return render(request, 'admin/products/add.html', {'form': form})
+
+
+@user_passes_test(lambda u: u.is_superuser, login_url='/')
 def deleteProduct(request, product_id):
 	Product.objects.get(id=product_id).delete()
 	return redirect('/boxman/products/')

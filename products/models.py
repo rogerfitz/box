@@ -25,3 +25,6 @@ class Product(models.Model):
         def __unicode__(self):
         	return self.name
 
+	def save(self, *args, **kwargs):
+		self.price_per_box = self.price*self.items_in_box/self.items_per_purchase
+		super(Product, self).save(*args, **kwargs)

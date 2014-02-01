@@ -2,13 +2,14 @@
 
 {% block body %}
 <table border="1">
-	<tr><td>Name</td><td>Price Per Box</td><td>Vertical</td><td>Product Type</td><td>Image</td><td>Item Count</td><td>Items Per Box</td><td>Item's Per Purchase</td><td>Purchase</td><td>Delete</td></tr>
+	<tr><td>Name</td><td>Price Per Box</td><td>Vertical</td><td>Product Type</td><td>Image</td><td>Item Count</td><td>Items Per Box</td><td>Item's Per Purchase</td><td>Purchase</td><td>Edit</td><td>Delete</td></tr>
 {% for p in products %}
 	<tr><td>{{ p.name }}</td><td>${{ p.price_per_box }}</td><td>{{ p.vertical }}</td><td>{{ p.productType }}</td><td><a href={{ p.url }} target="_blank"><img src={{ p.image_url }} height="200" width="150"></a></td>
 	<td>{{ p.item_count }}</td>
 	<td>{{ p.items_in_box }}</td>
 	<td>{{ p.items_per_purchase }}</td>
 	<td><a href={% url 'purchaseProduct' p.id %}>Purchase</a></td>
+	<td><a href={% url 'editProduct' p.id %}>Edit</a></td>
 	<td><a href={% url 'deleteProduct' p.id %}>Delete</a></td></tr>
 {% endfor %}
 </table>
