@@ -1,8 +1,6 @@
 # Django settings for box project.
 import os
 
-BASE_DIR = "/home/ubuntu/projects/box/"
-
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
 )
@@ -11,6 +9,7 @@ MANAGERS = ADMINS
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
+ALLOWED_HOSTS = ['localhost']
 
 AUTH_USER_MODEL = 'users.user'
 
@@ -103,11 +102,6 @@ ROOT_URLCONF = 'box.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'box.wsgi.application'
 
-TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'templates'),
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
 
 INSTALLED_APPS = (
     'django.contrib.auth',

@@ -65,6 +65,7 @@ def assignBox(request, prof_id):
 
 		for p in products:
 			p.item_count-=p.items_in_box
+			p.save()
 			box.products.add(p)
 
 		prof.box_to_ship = box
