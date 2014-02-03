@@ -40,5 +40,11 @@ class Profile(models.Model):
 		self.save()
 		return self
 
+	def deleteBoxToShip(self):
+		print 'hi'
+		self.box_to_ship = None
+		self.save()
+		return self
+
 class User(AbstractUser):
 	profile = models.OneToOneField(Profile, related_name='profile', unique=True, blank=True, null=True)

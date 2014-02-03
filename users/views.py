@@ -25,7 +25,10 @@ def index(request):
 		elif action == 'paid':
 			prof.pay()
 		elif action == 'delete':
-			return deleteUser(request, prof.user.id)
+			return deleteUser(request, prof.user.id)#doesn't work
+		elif action == 'deleteBox':
+			print 'hi'
+			prof.deleteBoxToShip()
 		else:
 			print action+' error!!!!'
 		return redirect('boxman/users')
