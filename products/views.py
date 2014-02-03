@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import user_passes_test
 
 @user_passes_test(lambda u: u.is_superuser, login_url='/')
 def index(request):
-	products= Product.objects.order_by('name')
+	products= Product.objects.order_by('price')
 	
 	return render(request, 'admin/products/products.html', {'products': products})
 

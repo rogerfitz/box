@@ -2,9 +2,9 @@
 
 {% block body %}
 <table border="1">
-	<tr><td>Name</td><td>Address</td><td>Box to Ship</td><td>Price</td><td>Current Box</td><td>Paid</td><td>Actions</td><td>Delete</td></tr>
+	<tr><td>Name</td><td>Email</td><td>Address</td><td>Box to Ship</td><td>Price</td><td>Current Box</td><td>Paid</td><td>Actions</td><td>Delete</td></tr>
 {% for u in users %}
-	<tr><td>{{ u.profile.first_name }} {{ u.profile.last_name }}</td><td>{{ u.profile.addr1 }}<br>{% if "" == u.profile.addr2 %}{{ u.profile.addr2 }}<br>{% endif %}{{ u.profile.city }}, {{ u.profile.state }}</td><td>{% for i in u.profile.box_to_ship.getPreview %}<a href={{ i.1 }}><img src={{ i.0 }} height="200" width="150"></a>{% empty %}<a href="{% url 'assignBox' u.profile.id %}">Assign</a>{% endfor %}</td><td>${{ u.profile.box_to_ship.price }}</td><td>{% for i in u.profile.current_box.getPreview %}<a href={{ i.1 }}><img src={{ i.0 }} height="200" width="150"></a>{% endfor %}</td><td>{% if u.profile.paid %}Paid{% else %}Not Paid{% endif %}</td>
+	<tr><td>{{ u.profile.first_name }} {{ u.profile.last_name }}</td><td>{{ u.username }}</td><td>{{ u.profile.addr1 }}<br>{% if "" == u.profile.addr2 %}{{ u.profile.addr2 }}<br>{% endif %}{{ u.profile.city }}, {{ u.profile.state }}</td><td>{% for i in u.profile.box_to_ship.getPreview %}<a href={{ i.1 }}><img src={{ i.0 }} height="200" width="150"></a>{% empty %}<a href="{% url 'assignBox' u.profile.id %}">Assign</a>{% endfor %}</td><td>${{ u.profile.box_to_ship.price }}</td><td>{% for i in u.profile.current_box.getPreview %}<a href={{ i.1 }}><img src={{ i.0 }} height="200" width="150"></a>{% endfor %}</td><td>{% if u.profile.paid %}Paid{% else %}Not Paid{% endif %}</td>
 	<td>
 	<select onchange="getval(this);">
 	  <option><center>----------</center></option>
