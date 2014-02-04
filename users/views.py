@@ -17,7 +17,7 @@ def index(request):
 	if request.method == 'POST':
 		action, prof_id = request.POST['data'].split('.')
 		prof = Profile.objects.get(id=prof_id)
-		print action
+		
 		if action == 'shipped':
 			prof.ship()
 		elif action == 'customBox':
@@ -86,7 +86,7 @@ def register(request):
         if form.is_valid():
 		user = form.save()
 		user =  authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password1'])
-		login(request, user)		
+		login(request, user)	
             	return redirect('/home')
     else:
         form = UserForm()

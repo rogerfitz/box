@@ -6,6 +6,7 @@ from users.forms import UserForm, ProfileForm, FullProfileForm
 from users.models import User, Profile
 from products.models import Product
 from box.settings import boxFeedback
+from django.core.mail import send_mail
 
 @login_required
 def index(request):
@@ -33,7 +34,9 @@ def addProfile(request):
 		form = FullProfileForm(request.POST)
 		user.profile = form.save()
 		user.save()
+		send_mail('Nice Package', 'Hi '+str(user.profile)+',\n\nThanks for creating an account.\nThe Nice Package Team -- www.thenicepackage.com\n\nFor any questions feel free to contact Matteo matteo@thenicepackage.com', 'matteo@thenicepackage.com', [str(user.username)], fail_silently=False)	
 		return index(request)
+
 	else:
 		form = FullProfileForm()
 

@@ -4,6 +4,7 @@ from box import views
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     url(r'^home/', include('home.urls')),
+    url(r'^mail/', include('mail.urls')),
     url(r'^boxman/products/', include('products.urls')),
     url(r'^boxman/users/', include('users.urls')),
     url(r'^boxman/boxes/', include('boxes.urls')),

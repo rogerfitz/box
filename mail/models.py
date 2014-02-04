@@ -1,6 +1,5 @@
 from django.db import models
-import smtplib
-from custom_settings import *
+'''
 
 class Mail(models.Model): #move to seperate app
 	to = models.EmailField()
@@ -14,3 +13,4 @@ class Mail(models.Model): #move to seperate app
 		server = smtplib.SMTP('smtp-mail.outlook.com', 587)
 		server.login(email_username, email_password)
 		print 'hi'
+'''
