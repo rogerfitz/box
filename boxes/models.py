@@ -18,7 +18,7 @@ class Box(models.Model): #move to seperate app
 	date_added = models.DateField(auto_now_add=True)
 	feedback = models.ManyToManyField(BoxFeedback)
 	date_modified = models.DateField(auto_now=True)
-	date_delivered = models.DateField(blank=True)
+	date_delivered = models.DateField(blank=True, null=True)
 	
 	def getMetrics(self):
 		likes = (self.feedback.filter(feedback='like')).count()
