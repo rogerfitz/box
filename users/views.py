@@ -12,8 +12,6 @@ from django.http import HttpResponse
 def index(request):
 	#sort by state
 	users = User.objects.exclude(is_superuser=True).exclude(profile_id__isnull=True)
-	for u in users:
-		print u.username
 	if request.method == 'POST':
 		action, prof_id = request.POST['data'].split('.')
 		prof = Profile.objects.get(id=prof_id)
