@@ -2,6 +2,7 @@ from django.db import models
 from boxes.models import Box
 from django.contrib.auth.models import AbstractUser
 from django.core.mail import send_mail
+import datetime
 
 class Profile(models.Model):
 	addr1 = models.CharField(max_length=50, blank=True, default="")
@@ -27,12 +28,13 @@ class Profile(models.Model):
 	def ship(self):
 		if self.paid is True:
 			self.paid = False
-			if self.current_box is not None:
+			if not self.current_box:
 				self.boxes.add(self.current_box)
 			self.current_box = self.box_to_ship
 			self.box_to_ship = None
+			self.date_delivered = datetime.datetime.now()
 			self.save()
-			send_mail('Nice Package Delivery Confirmation', 'Hi '+str(self)+',\n\nYour package has been delivered. We sincerely hope you enjoy it. To help us make your next box even better, please review the items we sent you by signing in at www.thenicepackage.com.\nThanks and have a great day!\nThe Nice Package Team\n\nFor any questions feel free to email Matteo matteo@thenicepackage.com', 'matteo@thenicepackage.com', [str(self.profile.username)], fail_silently=False)
+			send_mail('Nice Package Delivery Confirmation', 'Hi '+str(self)+",\n\nYour package has been delivered. If you didn't here us come in, sometimes we like to mix things up and deliver our nice package through the backdoor. We sincerely hope you enjoy it. To help us make your next box even better, please review the items we sent you by signing in at www.thenicepackage.com.\nThanks and have a great day!\nThe Nice Package Team\n\nIf coming through the backdoor just ain't cool with you or you have some questions, feel free to email Matteo matteo@thenicepackage.com", 'matteo@thenicepackage.com', [str(self.profile.username)], fail_silently=True)
 			return self
 		else:
 			return self.first_name+' '+self.last_name+' needs to pay!'
@@ -43,12 +45,9 @@ class Profile(models.Model):
 		return self
 
 	def deleteBoxToShip(self):
-		print 'hi'
 		self.box_to_ship = None
 		self.save()
 		return self
 
 class User(AbstractUser):
 	profile = models.OneToOneField(Profile, related_name='profile', unique=True, blank=True, null=True)
-	def save(self, *args, **kwargs):
-		super(User, self).save(*args, **kwargs)

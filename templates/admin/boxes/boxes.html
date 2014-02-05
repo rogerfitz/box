@@ -2,15 +2,16 @@
 
 {% block body %}
 <table border="1">
-	<tr><td>Price</td><td>Products</td><td></td></tr>
+	<tr><td>Price</td><td>Products</td><td>Like</td><td>Ok</td><td>Dislike</td><td>Felt Small</td></tr>
 {% for box in boxes %}
 <tr>
   <td>${{ box.price }}</td>
   <td>
-  {% for p in box.products.all %}
-  	<a href={{ p.url }} target="_blank"><img src={{ p.image_url }} height="200" width="150"></a>
-  {% endfor %}
+  {{ box }}
   </td>
+  {% with metrics=box.getMetrics %}
+  <td>{{ metrics.0 }}</td><td>{{ metrics.1 }}</td><td>{{ metrics.2 }}</td><td>{{ metrics.3 }}</td>
+  {% endwith %}
   <td><a href={% url 'deleteBox' box.id %}>Delete</a></td>
 </tr>
 {% endfor %}

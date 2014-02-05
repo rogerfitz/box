@@ -64,14 +64,18 @@ def assignBox(request, prof_id):
 			p = Product.objects.get(id=int(product_id))
 			box.price += float(p.price_per_box)
 			products.append(p)
-		box.save()
+
+		b, distinct = box.distinct(products)
+		if distinct:
+			box.save(products)
+			b = box
 
 		for p in products:
 			p.item_count-=p.items_in_box
 			p.save()
-			box.products.add(p)
-
-		prof.box_to_ship = box
+			if distinct:
+				b.products.add(p)
+		prof.box_to_ship = b
 		prof.save()
 		
 		return redirect('/boxman/users/')

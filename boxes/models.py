@@ -6,7 +6,10 @@ from django.db.models.query import QuerySet
 
 class BoxFeedback(models.Model):
 	feedback = models.CharField(max_length=20, choices=boxFeedback)
-	user = models.OneToOneField('users.User')
+	user = models.ManyToManyField('users.User', related_name='box_feedback_user')
+	
+	def __unicode__(self):
+		return self.feedback
 
 class Box(models.Model): #move to seperate app
 	products = models.ManyToManyField(Product)
@@ -15,7 +18,15 @@ class Box(models.Model): #move to seperate app
 	date_added = models.DateField(auto_now_add=True)
 	feedback = models.ManyToManyField(BoxFeedback)
 	date_modified = models.DateField(auto_now=True)
+	date_delivered = models.DateField(blank=True)
 	
+	def getMetrics(self):
+		likes = (self.feedback.filter(feedback='like')).count()
+		oks = (self.feedback.filter(feedback='ok')).count()
+		dislikes = (self.feedback.filter(feedback='dislike')).count()
+		smalls = (self.feedback.filter(feedback='small')).count()
+		return [likes, oks, dislikes, smalls]
+		
 
 	def __unicode__(self):
 		s=''
@@ -41,10 +52,8 @@ class Box(models.Model): #move to seperate app
 			for p in products:
 				names.append(p.name)
 			
-			print names
-			print newNames
 			if len(names) == len(newNames) and len(set(names) & set(newNames)) == len(names):
-				print 'false'
-				return False
 
-		return True
+				return box, False
+
+		return box, True

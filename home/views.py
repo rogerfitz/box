@@ -1,31 +1,45 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-
-from boxes.models import Box
+from boxes.models import Box, BoxFeedback
 from users.forms import UserForm, ProfileForm, FullProfileForm
 from users.models import User, Profile
-from products.models import Product
-from box.settings import boxFeedback
+from products.models import Product, ProductFeedback
+from box.settings import boxFeedback, prodFeedback
 from django.core.mail import send_mail
 
 @login_required
 def index(request):
 	if request.user.is_superuser:
 		return redirect('/boxman/')
+
 	user = User.objects.get(id=request.user.id)
 	if user.profile is None:
 		return addProfile(request)
 
 	if request.method == 'POST':
-		try:
-			obj, id, feedback = request.POST['data'].split('.')
-			if obj == "box":
-				pass#Box.
-		except:
-			pass
+		obj, id, feedback = request.POST['data'].split('.')
+		if obj == "box":
+			obj = Box.objects.get(id=id)
+			feedbackObj = BoxFeedback()
+		elif obj == 'product':
+			obj = Product.objects.get(id=id)
+			feedbackObj = ProductFeedback()
 
-		return render(request, 'home/index.html', {'user': user, 'boxFeedback': boxFeedback})
-	return render(request, 'home/index.html')
+		for junk in obj.feedback.filter(user=user):
+			junk.delete()
+		
+
+		feedbackObj.feedback = str(feedback)
+		feedbackObj.save()
+		
+		feedbackObj.user.add(user)
+		feedbackObj.save()
+		obj.feedback.add(feedbackObj)
+
+		obj.save()	
+			
+		return render(request, 'home/index.html', {'user': user, 'boxFeedback': boxFeedback, 'prodFeedback': prodFeedback})
+	return render(request, 'home/index.html', {'user': user, 'boxFeedback': boxFeedback, 'prodFeedback': prodFeedback})
 
 @login_required
 def addProfile(request):
@@ -34,7 +48,7 @@ def addProfile(request):
 		form = FullProfileForm(request.POST)
 		user.profile = form.save()
 		user.save()
-		send_mail('Nice Package', 'Hi '+str(user.profile)+',\n\nThanks for creating an account.\nThe Nice Package Team -- www.thenicepackage.com\n\nFor any questions feel free to contact Matteo matteo@thenicepackage.com', 'matteo@thenicepackage.com', [str(user.username)], fail_silently=False)	
+		send_mail('Nice Package', 'Hi '+str(user.profile)+',\n\nThanks for creating an account.\nThe Nice Package Team -- www.thenicepackage.com\n\nFor any questions or if you are wondering just how our packages become so nice, feel free to contact Matteo matteo@thenicepackage.com', 'matteo@thenicepackage.com', [str(user.username)], fail_silently=True)	
 		return index(request)
 
 	else:

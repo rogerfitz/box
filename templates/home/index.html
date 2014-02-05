@@ -2,33 +2,21 @@
 
 {% block body %}
 <div class="row-fluid">
-{% for box in user.profile.boxes.all %}
-<h1 class='text-center'>Past Boxes</h1>
-<table border="1">
-	<tr><td>Date</td><td>Products</td><td></td></tr>
-<tr>
-  <td>{{ box.date_modified }}</td>
-  <td>
-  {% for p in box.products.all %}
-  	<a href={{ p.url }} target="_blank"><img src={{ p.image_url }} height="200" width="150"></a>
-  {% endfor %}
-  </td>
-</tr>
-{% endfor %}
 {% with box=user.profile.current_box %}
 {% if box != None %}
 <h1 class='text-center'>Current Box</h1>
 <table border="1">
-	<tr><td>Date</td></tr>
+	<tr><td>Delivery Date</td></tr>
 <tr>
-  <td>{{ box.date_modified }}</td>
+  <td>{{ box.date_delivered }}</td>
   {% for p in box.products.all %}
   <td>
   	<a href={{ p.url }} target="_blank"><img src={{ p.image_url }} height="200" width="150"></a>
   </td>
   {% endfor %}
   <td>	<select onchange="getval(this);">
-	  <option><center>----------</center></option>
+	  
+	  <option><center>{% if box.feedback %}{{ box.feedback.all.0 }}{% else %}Review your box!{% endif %}</center></option>
 	  {% for option in boxFeedback %}
 	  <option value='box.{{ box.id }}.{{ option.0 }}'>{{ option.1 }}</option>
 	  {% endfor %}
@@ -37,10 +25,16 @@
   </tr><tr><td></td>
   {% for p in box.products.all %}
   <td>
-  	Choose
+  	<select onchange="getval(this);">
+	  <option><center>{% if p.feedback %}{{ p.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+	  {% for option in prodFeedback %}
+	  <option value='product.{{ p.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+	  {% endfor %}
+	</select>
   </td>
   {% endfor %}
 </tr>
+</table>
 {% else %}
 {% if user.profile.paid %}
 <h3>{{ user.profile }}, thanks for ordering. You're personalized package will be delivered next week, the first week of February. In the meantime, enjoy this gif. </h3>
@@ -49,22 +43,76 @@
 {% if user.profile.city == '' %}
 <h3>Please add your shipping information</h3>
 {% else %}
-<h3>Thanks for making an account. Our records indicate that you haven't paid yet. Ensure that you've paid Matteo mhoch2@illinois.edu</h3>
+<h3>Thanks for making an account. Our records indicate that you haven't paid yet. Ensure that you've paid Matteo matteo@thenicepackage.com</h3>
 {% endif %}
 {% endif %}
 {% endif %}
 {% endwith %}
-</table>
 </div>
+<div class="row-fluid">
+<h1 class='text-center'><br><br>Past Boxes</h1>
+{% for box in user.profile.boxes.all %}
+<table border="1">
+	<tr><td>Delivery Date</td></tr>
+<tr>
+  <td>{{ box.date_delivered }}</td>
+  {% for p in box.products.all %}
+  <td>
+  	<a href={{ p.url }} target="_blank"><img src={{ p.image_url }} height="200" width="150"></a>
+  </td>
+  {% endfor %}
+  <td>	<!-- Add buttons later
+<button type="button" class="btn btn-default btn-lg" id="up">
+	  <i class="fa fa-thumbs-up fa-lg"></i>
+	</button>
+	<button type="button" class="btn btn-default btn-lg">
+	  <i class="fa fa-angle-up fa-lg"><a href="#"></a></i>
+	</button>
+	<button type="button" class="btn btn-default btn-lg">
+	  <i class="fa fa-thumbs-down fa-lg"></i>
+	</button>-->
+	<select onchange="getval(this);">
+	  
+	  <option><center>{% if box.feedback %}{{ box.feedback.all.0 }}{% else %}Review your box!{% endif %}</center></option>
+	  {% for option in boxFeedback %}
+	  <option value='box.{{ box.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+	  {% endfor %}
+	</select>
+  </td>
+  </tr><tr><td></td>
+  {% for p in box.products.all %}
+  <td>
+  	<select onchange="getval(this);">
+	  <option><center>{% if p.feedback %}{{ p.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+	  {% for option in prodFeedback %}
+	  <option value='product.{{ p.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+	  {% endfor %}
+	</select>
+  </td>
+  {% endfor %}
+</tr>
+</table>
+{% endfor %}
+</div>
+{% endblock %}
+{% block scripts %}
 <script type="text/javascript">
-    function getval(sel) {
+       function getval(sel) {
 	$.ajax({
 	  type: "POST",
-	  url: '/',
+	  url: '/home/',
 	  data: {'data': sel.value, 'csrfmiddlewaretoken': '{{csrf_token}}'},
 	  dataType: "json",
 	  success: sel.value,
 	});
-    }
+    	}
+ $(document).ready(function() {
+
+
+      /*$(".btn").click(function(){
+         $("#up").effect( "highlight", 
+          {color:"#669966"}, 3000 );
+      });*/
+});
 </script>
 {% endblock %}

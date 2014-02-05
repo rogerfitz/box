@@ -4,5 +4,5 @@ from products.models import Product
 class ProductForm(ModelForm):
 	class Meta:
 		model = Product
-		fields = '__all__'
+		exclude = ['price_per_box', 'feedback', 'item_count']
 

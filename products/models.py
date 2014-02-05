@@ -2,6 +2,13 @@ from django.db import models
 from box.settings import prodFeedback
 from attr.models import ProductAttr, ProductType, Vertical
 
+class ProductFeedback(models.Model):
+	feedback = models.CharField(max_length=20, choices=prodFeedback)
+	user = models.ManyToManyField('users.User', related_name='prod_feedback_user')
+	
+	def __unicode__(self):
+		return self.feedback
+
 class Product(models.Model):
 	name = models.CharField(max_length=200)
 	url = models.CharField(max_length=200)
@@ -16,7 +23,7 @@ class Product(models.Model):
 
 	attrs = models.ManyToManyField(ProductAttr, blank=True)
 
-	feedback = models.CharField(max_length=30, choices=prodFeedback, blank=True, default=None, null=True)
+	feedback = models.ManyToManyField(ProductFeedback)
 
 	item_count = models.IntegerField(default=0)
 	items_in_box = models.IntegerField(default=1)
@@ -28,3 +35,10 @@ class Product(models.Model):
 	def save(self, *args, **kwargs):
 		self.price_per_box = self.price*self.items_in_box/self.items_per_purchase
 		super(Product, self).save(*args, **kwargs)
+
+	def getMetrics(self):
+		likes = (self.feedback.filter(feedback='like')).count()
+		oks = (self.feedback.filter(feedback='ok')).count()
+		dislikes = (self.feedback.filter(feedback='dislike')).count()
+		have = (self.feedback.filter(feedback='already have')).count()
+		return [likes, oks, dislikes, have]
