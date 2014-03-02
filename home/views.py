@@ -86,6 +86,9 @@ def editProfile(request):
 	form = FullProfileForm(instance=profile)
 	return render(request, 'home/editProfile.html', {'form': form})
 
-
+def ipn(request):
+	get = request.GET
+	post = request.POST
+	return render(request, 'debug.html', {'get': get, 'post': post})
 
 
