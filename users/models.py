@@ -11,6 +11,7 @@ class Profile(models.Model):
 	city = models.CharField(max_length=40, blank=True, default="")
 	state = models.CharField(max_length=30, blank=True, default="")
 	zipcode = models.CharField(max_length=15, blank=True, default="")
+	access_code = models.CharField(max_length=60, blank=True, default="")
 	
 	date_of_birth = models.DateField(blank=True, null=True, help_text='Date of Birth')
 	
