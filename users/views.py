@@ -7,10 +7,12 @@ from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.views import logout_then_login
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
+import traceback
 
 @user_passes_test(lambda u: u.is_superuser, login_url='/login')
 def index(request):
 	#sort by state
+	error='error'
 	users = User.objects.exclude(is_superuser=True).exclude(profile_id__isnull=True)
 
 	if request.method == 'POST':
@@ -31,7 +33,11 @@ def index(request):
 		else:
 			print action+' error!!!!'
 		return redirect('boxman/users')
-	return render(request, 'admin/users/list.html', {'users': users})
+
+	return render(request, 'admin/users/list.html', {'users': users, 'error': error})
+
+def errorView(request, error):
+	return render(request, 'admin/users/list.html', {'users': users, 'error': error})
 
 @user_passes_test(lambda u: u.is_superuser, login_url='/login')
 def addUser(request):

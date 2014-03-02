@@ -30,7 +30,7 @@ class Profile(models.Model):
 	def ship(self):
 		if self.paid is True:
 			self.paid = False
-			if not self.current_box:
+			if self.current_box:
 				self.boxes.add(self.current_box)
 			self.current_box = self.box_to_ship
 			self.box_to_ship = None

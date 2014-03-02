@@ -19,6 +19,7 @@
 	<td><a href={% url 'deleteUser' u.id %}>Delete</a></tr>
 {% endfor %}
 </table>
+{{ error }}
 <a href={% url 'addUser' %}>Add</a>
 <script type="text/javascript">
     function getval(sel) {
