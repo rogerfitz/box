@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block body %} 
+<h3>Edit your preferences</h3>
+<form method="post" action="" class='text-left'>{% csrf_token %}
+    {{ form.as_p }}
+<input type="submit" value="Edit" />
+</form>
+{% endblock %}

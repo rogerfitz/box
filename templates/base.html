@@ -1,8 +1,9 @@
 <html> 
     <head>
-        <title> The Nice Package - for men! </title>
+        <title>The Nice Package</title>
     <!-- Bootstrap core CSS -->
     <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/ico" href="{{ STATIC_URL }}img/favicon.ico"/>
     <link href="{{ STATIC_URL }}css/box.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
@@ -16,11 +17,6 @@
     </style>
     
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="../../assets/js/html5shiv.js"></script>
-      <script src="../../assets/js/respond.min.js"></script>
-    <![endif]-->
   </head>
 
   <body>
@@ -30,18 +26,19 @@
 	<div class = "navbar">
             <nav class = "navbar navbar-inverse" id = "box-nav">
 	    <ul>
-                <li><a class = "active" href = "/">Home</a></li>
+                <!-- <li><a class = "active" href = "/">Home</a></li> -->
 		
 		
 	        <!--<li class="active"><a href='/surveys/'>Preferences</a></li>
 	        <!---->
 		{% if user.is_authenticated %}
 		{% if user.is_staff %}
-		<li class="active"><a href='/boxman/boxes/'>Boxes</a></li>
+		<li class="active"><a href='/boxman/boxes/'>Packages</a></li>
 	        <li class="active"><a href='/boxman/products/'>Products</a></li>
 	        <li class="active"><a href='/boxman/users/'>Users</a></li>
 		{% else %}
-		<li class="active"><a href='/home/'>Boxes</a></li>
+		<li class="active"><a href='/home/'>Packages</a></li>
+		<li class="active"><a href='/home/preferences/'>Preferences</a></li>
 		<li class="active"><a href='/home/profiles/'>Account Info</a></li>
 		{% endif %}
 	        <li class="active"><a href='/logout'>Logout</a></li>
@@ -57,20 +54,6 @@
 		{% block body %}{% endblock %}
 		</div>
 	</body>
-    <!--
-	<nav class="navbar navbar-default" role="navigation">
-	  <div class="navbar-header">
-	    <a class="navbar-brand" href="/">Care Packages</a>
-	  </div>
-	  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	    <ul class="nav navbar-nav">
-	      <li class="active"><a href='/'>Boxes</a></li>
-	      <li class="active"><a href='/surveys/'>Preferences</a></li>
-	      <li class="active"><a href='/profiles/'>Account Info</a></li>
-	      <li class="pull-right"><a href='/logout'>Logout</a></li>
-	    </ul>
-	</nav>
-   <!--wrap-->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

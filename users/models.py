@@ -1,5 +1,6 @@
 from django.db import models
 from boxes.models import Box
+from preferences.models import Preferences
 from django.contrib.auth.models import AbstractUser
 from django.core.mail import send_mail
 import datetime
@@ -21,6 +22,7 @@ class Profile(models.Model):
 	boxes = models.ManyToManyField(Box, related_name='boxes', blank=True, null=True, default=None)
 	box_to_ship = models.ForeignKey(Box, related_name='box_to_ship', blank=True, null=True)
 	current_box = models.ForeignKey(Box, related_name='current_box ', blank=True, null=True)
+	preferences = models.OneToOneField(Preferences, blank=True, null=True)
 
 	def __unicode__(self):
         	return self.first_name+' '+self.last_name
