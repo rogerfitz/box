@@ -6,6 +6,7 @@ from users.models import User, Profile
 from products.models import Product, ProductFeedback
 from box.settings import boxFeedback, prodFeedback
 from django.core.mail import send_mail
+#import logging
 
 @login_required
 def index(request):
@@ -89,6 +90,11 @@ def editProfile(request):
 def ipn(request):
 	get = request.GET
 	post = request.POST
+	f = open('/home/ubuntu/projects/box/ipn.log', 'w')
+	f.write('test')
+	#f.write(get)
+	#f.write(post)
+	f.close()
 	return render(request, 'debug.html', {'get': get, 'post': post})
 
 
