@@ -39,6 +39,7 @@ def index(request):
 
 		obj.save()	
 			
+		return render(request, 'home/index.html', {'user': user, 'boxFeedback': boxFeedback, 'prodFeedback': prodFeedback})
 	  except:
 		pass
 	return render(request, 'home/index.html', {'user': user, 'boxFeedback': boxFeedback, 'prodFeedback': prodFeedback})
@@ -65,7 +66,6 @@ def editProfile(request):
 		form = FullProfileForm(request.POST, instance=profile)
 		if form.is_valid():
 			user = User.objects.get(id=request.user.id)		
-			form = ProfileForm(request.POST)
 			user.profile = form.save()
 			user.save()
 			return redirect('/home')

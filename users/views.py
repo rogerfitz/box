@@ -14,6 +14,7 @@ def index(request):
 	#sort by state
 	error='error'
 	users = User.objects.exclude(is_superuser=True).exclude(profile_id__isnull=True)
+
 	if request.method == 'POST':
 		action, prof_id = request.POST['data'].split('.')
 		prof = Profile.objects.get(id=prof_id)
@@ -60,6 +61,7 @@ def deleteUser(request, user_id):
 def assignBox(request, prof_id):
 	products= Product.objects.all()
 	if request.method == 'POST':
+	  try:
 		prof = Profile.objects.get(id=prof_id)
 		box=Box()
 		products = []
@@ -79,10 +81,14 @@ def assignBox(request, prof_id):
 			p.save()
 			if distinct:
 				b.products.add(p)
+			b.save()
 		prof.box_to_ship = b
 		prof.save()
-		
 		return redirect('/boxman/users/')
+	  except:
+		print 'oh no'
+		
+		
 	return render(request, 'admin/boxes/products.html', {'products': products})
 
 def logout(request):

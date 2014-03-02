@@ -113,6 +113,7 @@ INSTALLED_APPS = (
     'boxes',
     'users',
     'attr',
+    'preferences',
     'mail',
     'captcha',
     'south',
