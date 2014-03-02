@@ -5,4 +5,3 @@ class PreferencesForm(ModelForm):
 	class Meta:
 		model = Preferences
 		fields = '__all__'
-

@@ -37,7 +37,7 @@
 </table>
 {% else %}
 {% if user.profile.paid %}
-<h3>{{ user.profile }}, thanks for ordering. You're personalized package will be delivered next week, the first week of February. In the meantime, enjoy this gif. </h3>
+<h3>{{ user.profile }}, thanks for ordering. You're personalized package will be delivered the second week of March. In the meantime, enjoy this gif. </h3>
 <div class="row text-center"><img src='http://media.giphy.com/media/76dXlFZZEqNH2/giphy.gif'></div>
 {% else %}
 {% if user.profile.city == '' %}
@@ -53,6 +53,12 @@
 </form>
 {% else %}
 <h3>Thanks for making an account. We are currently swamped with orders and are working on filling them. We will email you an access code as soon as we are ready for your business. Our current estimate is April.</h3>
+<br>
+<h5>If you already know your access code, enter it here!</h5>
+<form method="post" action="" class='text-center'>{% csrf_token %}
+    {{ access_form.as_p }}
+<input type="submit" value="Submit" />
+</form>
 {% endif %}
 {% endif %}
 {% endif %}

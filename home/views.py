@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from boxes.models import Box, BoxFeedback
-from users.forms import UserForm, ProfileForm, FullProfileForm
+from users.forms import UserForm, ProfileForm, FullProfileForm, AccessForm
 from users.models import User, Profile
 from products.models import Product, ProductFeedback
 from box.settings import boxFeedback, prodFeedback
@@ -15,6 +15,8 @@ def index(request):
 	user = User.objects.get(id=request.user.id)
 	if user.profile is None:
 		return addProfile(request)
+	
+	
 
 	if request.method == 'POST':
 	  try:
@@ -41,8 +43,20 @@ def index(request):
 			
 		return render(request, 'home/index.html', {'user': user, 'boxFeedback': boxFeedback, 'prodFeedback': prodFeedback})
 	  except:
-		pass
-	return render(request, 'home/index.html', {'user': user, 'boxFeedback': boxFeedback, 'prodFeedback': prodFeedback})
+		try:
+			profile = (User.objects.get(id=request.user.id)).profile
+			form = AccessForm(request.POST, instance=profile)
+			if request.method == 'POST':
+				if form.is_valid():
+					user = User.objects.get(id=request.user.id)		
+					user.profile = form.save()
+					user.save()
+					return redirect('/home')
+			
+		except:
+			pass
+	form = AccessForm(request.POST)
+	return render(request, 'home/index.html', {'user': user, 'boxFeedback': boxFeedback, 'prodFeedback': prodFeedback, 'access_form': form})
 
 @login_required
 def addProfile(request):
