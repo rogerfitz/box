@@ -66,7 +66,7 @@ def addProfile(request):
 		user.profile = form.save()
 		user.save()
 		send_mail('Nice Package', 'Hi '+str(user.profile)+',\n\nThanks for creating an account.\nThe Nice Package Team -- www.thenicepackage.com\n\nFor any questions or if you are wondering just how our packages become so nice, feel free to contact Matteo matteo@thenicepackage.com', 'matteo@thenicepackage.com', [str(user.username)], fail_silently=True)	
-		return index(request)
+		return redirect('/home/preferences')
 
 	else:
 		form = FullProfileForm()
