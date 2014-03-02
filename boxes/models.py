@@ -41,7 +41,7 @@ class Box(models.Model): #move to seperate app
         	return s
 
 	def distinct(self, newProducts):
-		boxes= Box.objects.all()
+		boxes = Box.objects.all()
 		newNames = []
 		for p in newProducts:
 			newNames.append(p.name)
@@ -56,4 +56,4 @@ class Box(models.Model): #move to seperate app
 
 				return box, False
 
-		return box, True
+		return self, True
