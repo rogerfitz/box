@@ -23,7 +23,7 @@ class Product(models.Model):
 
 	attrs = models.ManyToManyField(ProductAttr, blank=True)
 
-	feedback = models.ManyToManyField(ProductFeedback)
+	feedback = models.ManyToManyField(ProductFeedback, blank=True, null=True, default=None)
 
 	item_count = models.IntegerField(default=0)
 	items_in_box = models.IntegerField(default=1)

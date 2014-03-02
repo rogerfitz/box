@@ -17,6 +17,7 @@ def index(request):
 		return addProfile(request)
 
 	if request.method == 'POST':
+	  try:
 		obj, id, feedback = request.POST['data'].split('.')
 		if obj == "box":
 			obj = Box.objects.get(id=id)
@@ -38,7 +39,8 @@ def index(request):
 
 		obj.save()	
 			
-		return render(request, 'home/index.html', {'user': user, 'boxFeedback': boxFeedback, 'prodFeedback': prodFeedback})
+	  except:
+		pass
 	return render(request, 'home/index.html', {'user': user, 'boxFeedback': boxFeedback, 'prodFeedback': prodFeedback})
 
 @login_required

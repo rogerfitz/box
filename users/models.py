@@ -34,7 +34,7 @@ class Profile(models.Model):
 			self.box_to_ship = None
 			self.date_delivered = datetime.datetime.now()
 			self.save()
-			send_mail('Nice Package Delivery Confirmation', 'Hi '+str(self)+",\n\nYour package has been delivered. If you didn't here us come in, sometimes we like to mix things up and deliver our nice package through the backdoor. We sincerely hope you enjoy it. To help us make your next box even better, please review the items we sent you by signing in at www.thenicepackage.com.\nThanks and have a great day!\nThe Nice Package Team\n\nIf coming through the backdoor just ain't cool with you or you have some questions, feel free to email Matteo matteo@thenicepackage.com", 'matteo@thenicepackage.com', [str(self.profile.username)], fail_silently=True)
+			send_mail('Nice Package Delivery Confirmation', 'Hi '+str(self)+",\n\nYour package has been delivered. We sincerely hope you enjoy it. To help us make your next box even better, please review the items we sent you by signing in at www.thenicepackage.com.\nThanks and have a great day!\nThe Nice Package Team\n\nFeel free to email Matteo matteo@thenicepackage.com", 'matteo@thenicepackage.com', [str(self.profile.username)], fail_silently=True)
 			return self
 		else:
 			return self.first_name+' '+self.last_name+' needs to pay!'
