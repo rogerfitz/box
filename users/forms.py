@@ -30,7 +30,6 @@ class FullProfileForm(ModelForm):
 	def __init__(self, *args, **kwargs):
 		super(FullProfileForm, self).__init__(*args, **kwargs)
 		self.fields['date_of_birth'].widget = extras.SelectDateWidget(years=reversed(range(datetime.date.today().year-110, datetime.date.today().year-5)))
-		self.fields['date_of_birth'].help_text = "Accurate data helps us serve you better."
 
 class AccessForm(ModelForm):
 	class Meta:

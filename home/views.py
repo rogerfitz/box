@@ -66,7 +66,7 @@ def addProfile(request):
 		form = FullProfileForm(request.POST)
 		user.profile = form.save()
 		user.save()
-		send_mail('Nice Package', 'Hi '+str(user.profile)+',\n\nThanks for creating an account.\nThe Nice Package Team -- www.thenicepackage.com\n\nFor any questions or if you are wondering just how our packages become so nice, feel free to contact Matteo matteo@thenicepackage.com', 'matteo@thenicepackage.com', [str(user.username)], fail_silently=True)	
+		send_mail('Nice Package', 'Hi '+str(user.profile)+',\n\nThanks for creating an account.\n\nFor any questions or if you are wondering just how our packages become so nice, feel free to contact Matteo matteo@thenicepackage.com\n\nThe Nice Package Team -- www.thenicepackage.com', 'no-reply@thenicepackage.com', [str(user.username)], fail_silently=True)	
 		return redirect('/home/preferences')
 
 	else:
@@ -87,7 +87,7 @@ def editProfile(request):
 	form = FullProfileForm(instance=profile)
 	return render(request, 'home/editProfile.html', {'form': form})
 
-def ipn(request):
+def ipn(request):#don't work
 	get = request.GET
 	post = request.POST
 	f = open('/home/ubuntu/projects/box/ipn.log', 'w')
