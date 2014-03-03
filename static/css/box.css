@@ -95,6 +95,10 @@ input[type="text"], input[type='password']{
     padding-bottom: 15px;
 }
 
+.A .B{
+	width=400px;
+}
+
 table {
     table-layout: fixed;
     word-wrap: break-word;
