@@ -75,6 +75,10 @@ input[type="text"], input[type='password']{
     line-height: 22px;
 }
 
+.helptext, label{
+	font-size: 20px;
+}
+
 #name{
     font-family: 'Yellowtail';
 }
