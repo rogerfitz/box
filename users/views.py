@@ -91,6 +91,10 @@ def assignBox(request, prof_id):
 		
 	return render(request, 'admin/boxes/products.html', {'products': products})
 
+def preferences(request, user_id):
+	prefs = (User.objects.get(id=user_id).profile).preferences
+	return render(request, 'admin/users/preferences.html', {'prefs': prefs})
+
 def logout(request):
 	return logout_then_login(request, '/')
 

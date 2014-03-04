@@ -9,4 +9,5 @@ urlpatterns = patterns('',
     url(r'^add/$', views.addUser, name='addUser'),
     url(r'^delete/(?P<user_id>\d+)/$', views.deleteUser, name='deleteUser'),
     url(r'^assignBox/(?P<prof_id>\d+)/$', views.assignBox, name='assignBox'),
+    url(r'^preferences/(?P<user_id>\d+)/$', views.preferences, name='preferences'),
 )
