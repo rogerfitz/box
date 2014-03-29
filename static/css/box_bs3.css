@@ -1,0 +1,169 @@
+body {
+    background-color: #b79a72;
+    font-family: 'dosisextralight';
+    color: black;
+}
+a:link {text-decoration: none;}
+a:visited {text-decoration: none;}
+a:active {text-decoration: none;}
+a:hover {text-decoration: none;}
+.indexHeader .col-md-4 {
+    padding-left: 160px;
+}
+.mainTitle {
+    text-transform: uppercase;
+    font-size: 75px;
+    margin-top: 30px;
+    letter-spacing: 3px;
+}
+.titleImage {
+    position: relative;
+    top: 15px;
+}
+.indexBanner {
+    background-color: black;
+    text-align: center;
+    padding: 50px 0 50px;
+    margin-bottom: 100px;
+}
+.bannerHeader, .bannerSub {
+    color: #b79a72;
+}
+.bannerHeader {
+    font-family: 'dosisextrabold';
+}
+.bannerSub {
+    margin-bottom: 40px;
+    font-family: 'dosislight';
+}
+.btn-package {
+  color: black;
+  background-color: #b79a72;
+  min-width: 120px;
+  font-family: 'dosissemibold'
+}
+.btn-package:hover,
+.btn-package:focus,
+.btn-package:active,
+.btn-package.active,
+.open .dropdown-toggle.btn-package {
+  color: black;
+  background-color: #ddb988;
+}
+.btn-package-opposite {
+  color: #b79a72;
+  background-color: black;
+  min-width: 120px;
+  font-family: 'dosissemibold'
+}
+.btn-package-opposite:hover,
+.btn-package-opposite:focus,
+.btn-package-opposite:active,
+.btn-package-opposite.active,
+.open .dropdown-toggle.btn-package-opposite {
+  color: #b79a72;
+  background-color: #333333;
+}
+.btn-login {
+    margin-right: 10px;
+}
+.btn-signup {
+    margin-left: 10px;
+}
+.whoFor, .howWorks, .howStart {
+    margin-bottom: 100px;
+    text-align: center;
+}
+.whoFor .col-md-2, .howWorks .col-md-2, .howStart .col-md-2 {
+    font-size: 26px;
+    padding-top: 60px;
+}
+.whoFor .col-md-3, .howWorks .col-md-3 {
+    width: 23%;
+}
+.howDesc p {
+    font-family: 'dosissemibold'
+}
+.whoIs {
+    letter-spacing: 7px;
+}
+.thisFor{
+    letter-spacing: 1px;
+}
+.howDoes {
+    letter-spacing: 2px;
+}
+.itWork {
+    letter-spacing: 3px;
+}
+.howDoI {
+    letter-spacing: 3px;
+}
+.start {
+    letter-spacing: 7px;
+}
+.whoFor p, .howWorks p, .howStart p {
+    margin-bottom: 0px;
+    margin-right: 30px;
+}
+.whoFor img, .howWorks img, .howStart img {
+    display: block;
+/*    margin-right: auto;
+    margin-left: auto;*/
+    margin-bottom: 10px;
+}
+.enrollCopy{
+    font-size: 32px;
+    padding-right: 250px;
+}
+.footerNav {
+    list-style-type: none;
+    margin-top: 30px;
+}
+.footerNav li {
+    display: inline;
+    font-size: 36px;
+    margin: 10px 25px 0;
+}
+.footerNav a {
+    color: white;
+}
+.footerNav a:hover {
+    color: #b79a72;
+}
+.indexFooter {
+    background: url('../bootstrap3/images/PaperTexture.png') top center no-repeat;
+    color: white;
+    padding: 50px 0 50px;
+    -moz-box-shadow: 0px 7px 55px 4px black;
+    -webkit-box-shadow: 0px 7px 55px 4px black;
+    box-shadow: 0px 7px 55px 4px black;
+}
+.facebook {
+    position: relative;
+    top: 4px;
+}
+.facebook:hover {
+    color: #3b5998;
+}
+.twitter {
+    position: relative;
+    top: 7px;
+}
+.twitter:hover {
+    color: #00aced;
+}
+.marginLeft15 {
+    margin-left: 15px;
+}
+.paddingLeftZero {
+    padding-left: 0px;
+}
+.contactForm{
+    padding-left: 200px;
+    margin-bottom: 100px;
+}
+.contactForm label {
+    font-size: 18px;
+    font-family: 'dosissemibold';
+}

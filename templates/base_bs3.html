@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}The Nice Package{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href='http://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'> -->
+
+    <!-- Custom styles for this template -->
+    <!-- <link href="{{ STATIC_URL }}css/auth.css" rel="stylesheet"> -->
+    <link href="{{ STATIC_URL }}bootstrap3/fonts/dosis/stylesheet.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}bootstrap3/ss-social-regular/webfonts/ss-social-regular.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/sticky.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/box_bs3.css" rel="stylesheet">
+    <!-- <link href="{{ STATIC_URL }}css/box.css" rel="stylesheet"> -->
+    <!-- <link href="{{ STATIC_URL }}ss-social-regular/webfonts/ss-social-regular.css" rel="stylesheet"> -->
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="{{ STATIC_URL }}favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ STATIC_URL }}ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ STATIC_URL }}ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ STATIC_URL }}ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="{{ STATIC_URL }}ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body>
+
+    <!-- Wrap all page content here -->
+    <div id="wrap">
+
+      <!-- Begin page content -->
+      <div class="wrapper">
+        <div class="col-md-12 indexHeader">
+            <div class="container">
+                <div class="col-md-8">
+                    <h1 class="mainTitle">the nice package</h1>
+                </div>
+                <div class="col-md-4">
+                    <a href="{% url 'index' %}"><img src="{{ STATIC_URL }}bootstrap3/images/Nice-Package-Logo.png" class="img-responsive titleImage" alt="Responsive image"></a>
+                </div>
+            </div>
+        </div>
+        {% block body %}{% endblock %}
+      </div>
+    </div>
+
+    <div id="footer">
+      <div class="">
+        {% block footer %}
+          <div class="col-md-12 indexFooter">
+              <div class="container">
+                  <div class="col-md-2">
+                      <a href="{% url 'index' %}"><img src="{{ STATIC_URL }}bootstrap3/images/Nice-Package-Logo-White.png" class="img-responsive titleImage" alt="Responsive image"></a>
+                  </div>
+                  <div class="col-md-10">
+                      <ul class="footerNav">
+                          <li><a href="{% url 'about' %}">About</a></li>
+                          <li><a href="{% url 'careers' %}">Careers</a></li>
+                          <li><a href="{% url 'privacy' %}">Legal</a></li>
+                          <li><a href="{% url 'contact' %}">Contact</a></li>
+                          <li><a href="https://www.facebook.com/thenicepackage"><span class="ss-facebook social-icon facebook"></span></a></li>
+                          <li><a href="https://twitter.com/TheNicePackage"><span class="ss-twitter social-icon twitter"></span></a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+        {% endblock %}
+      </div>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
