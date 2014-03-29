@@ -4,6 +4,10 @@ PIL==1.1.7
 Pillow==2.3.0
 South==0.8.4
 argparse==1.2.1
+distribute==0.6.32
 django-simple-captcha==0.4.1
+docopt==0.4.0
+mandrill==1.0.53
+requests==2.2.1
 six==1.5.2
 wsgiref==0.1.2

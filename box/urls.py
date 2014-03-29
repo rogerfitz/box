@@ -13,6 +13,10 @@ urlpatterns = patterns('',
     url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'users/login.html'}),
     url(r'^logout/$', 'users.views.logout'),
     url(r'^captcha/', include('captcha.urls')),
-    
+    url(r'^privacy/$', views.privacy_policy, name='privacy'),
+    url(r'^careers/$', views.careers, name='careers'),
+    url(r'^about/$', views.about, name='about'),
+    url(r'^contact/$', views.contact, name='contact'),
+    url(r'^contact/complete/$', views.contact_complete, name='contact_complete'),
 )
 

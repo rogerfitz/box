@@ -1,48 +1,71 @@
-{% extends "base.html" %}
+{% extends "base_bs3.html" %}
 
 {% block body %}
-            <div class = "hero-unit">
-                <h1> Welcome to <span id = "name">TheNicePackage!</span><br><span id = 'secondTop'>Your favorite thing, you just don't know it yet!</span> </h1>
-                <!--<h2> Feel free to look around to learn more about our product and get more information.</h2>
-            <a class = "btn btn-primary btn-lg" role = "button" id = "hero-button"> Learn more about us! </a>-->
-            </div>
-            
-            <div class = "row">
-                <div class = "span12">
-                    <h2> What we do at <span id = "name">TheNicePackage</span></h2>
-                </div>
-            </div>
-            <div class = "row">
-                <div class = "span4">
-                    <h3> Who's it for? </h3>
-                    <p> So you're a guy, right? I bet you hate shopping? Always buying the same stuff but never feeling entirely satisfied. Shopping can be a mundane chore, especially when you've got other priorities. That's where we come in.</p>
-                </div>
-                
-                <div class = "span4">
-                    <h3> How does it work?</h3>
-                    <p>Each month we will send you a personalized box full of things we think you would love. Everything from party swag, snacks, and other goodies, we'll be sure to keep you satisfied.</p>
-                </div>
-                
-                <div class = "span4">
-                    <h3> How do I go from here?</h3>
-                    <p> Well, it's easy! Just go to our <a href = "/login"> Login</a> page, create an account, tell us what you like, and we'll get started right off the bat. Happy gifting!</p>
-                </div>
-            </div>
-            
-            <hr> 
-        
-            <div class = "row">
-                <div class = "span12"><h2> Got any questions? Contact us!</h2> </div>
-            </div>
-                <div class = "row">
-                    <div class = "span6" id = "contactInfo"><p>We recognize that our customers are the most important part of our business. If you have any feedback, suggestions, or problems feel free to get in touch with Matteo, <a>matteo@thenicepackage.com</a></p>
-                    </div>
-                    <center><div class = "span6" ><img src="http://4.bp.blogspot.com/-Goe5ZAO9400/UZhTCJklYLI/AAAAAAAAAp4/sjHoB56WTjc/s1600/mystery_box%2B2.jpg"></div> </center>
-            
-            </div>
-            
-            </div>
-            
-        </div>
     
+    <div class="col-md-12 indexBanner">
+        <div class="container">
+            <h1 class="bannerHeader">WELCOME to THE NICE PACKAGE!</h1>
+            <h2 class="bannerSub">Your new favorite thing, you just don't know yet!</h2>
+            <a href='/login'><button type="button" class="btn btn-lg btn-package btn-login">LOGIN</button></a>
+            <a href='/boxman/users/register/'><button type="button" class="btn btn-lg btn-package btn-signup">SIGN UP</button></a>
+        </div>
+    </div>
+    <div class="col-md-12 whoFor">
+        <div class="container">
+            <div class="col-md-2 howDesc">
+                <p class="whoIs">WHO IS</p>
+                <p class="thisFor">THIS FOR?</p>
+            </div>
+            <div class="col-md-3 paddingLeftZero">
+                <img src="{{ STATIC_URL }}bootstrap3/images/College-Guy-Icon.png" class="img-responsive" alt="Responsive image">
+                <p>College Dudes</p>
+            </div>
+            <div class="col-md-3">
+                <img src="{{ STATIC_URL }}bootstrap3/images/Classy-Man-Icon.png" class="img-responsive" alt="Responsive image">
+                <p>Aspiring Men</p>
+            </div>
+            <div class="col-md-3 marginLeft15">
+                <img src="{{ STATIC_URL }}bootstrap3/images/Excited-Man-Icon.png" class="img-responsive" alt="Responsive image">
+                <p>Any guy who wants to</p>
+                <p>discover new things</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 howWorks">
+        <div class="container">
+            <div class="col-md-2 howDesc">
+                <p class="howDoes">HOW DOES</p>
+                <p class="itWork">IT WORK?</p>
+            </div>
+            <div class="col-md-3 paddingLeftZero">
+                <img src="{{ STATIC_URL }}bootstrap3/images/Items-Icon.png" class="img-responsive" alt="Responsive image">
+                <p>A package is delivered to your</p>
+                <p>door once a month</p>
+            </div>
+            <div class="col-md-3">
+                <img src="{{ STATIC_URL }}bootstrap3/images/Package-Icon.png" class="img-responsive" alt="Responsive image">
+                <p>An assortment of personalized</p>
+                <p>items and samples</p>
+            </div>
+            <div class="col-md-3 marginLeft15">
+                <img src="{{ STATIC_URL }}bootstrap3/images/Rating-Icon.png" class="img-responsive" alt="Responsive image">
+                <p>Based on your preferences</p>
+                <p>and feedback</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12 howStart">
+        <div class="container">
+            <div class="col-md-2 howDesc">
+                <p class="howDoI">HOW DO I</p>
+                <p class="start">START?</p>
+            </div>
+            <div class="col-md-1">
+            </div>
+            <div class="col-md-9">
+                <a href='/boxman/users/register/'><img src="{{ STATIC_URL }}bootstrap3/images/Enroll-Icon.png" class="img-responsive" alt="Responsive image"></a>
+                <p class="enrollCopy">$30 for your first two months!</p>
+            </div>
+        </div>
+    </div>
 {% endblock %}
