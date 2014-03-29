@@ -84,6 +84,9 @@ a:hover {text-decoration: none;}
 .howDesc p {
     font-family: 'dosissemibold'
 }
+p {
+    font-size: 18px;
+}
 .whoIs {
     letter-spacing: 7px;
 }
