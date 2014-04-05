@@ -99,10 +99,12 @@ Once you have everything squared away you should be able to run the following co
 
 Note: You might have an error using the right version of Python if you also use Anacondas. Check out this StackOverflow: http://stackoverflow.com/questions/21635107/pip-executes-the-wrong-python-library-versions-inside-virtual-env
 
+Note 2: You might have touble installing PIL and argparse. See this StackOverflow post: http://stackoverflow.com/questions/21242107/pip-install-pil-dont-install-into-virtualenv
+
 4) Setup Local Django Development
 ---------------------------------
 
-Obtain the custom_settings.py file by emailing the admin directly. Once you have this settings file you need to change one thing, the BASE_DIR variable:
+Change the BASE_DIR variable in custom_settings.py:
 
     BASE_DIR = "/your/path/to/box"
 

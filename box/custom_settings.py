@@ -1,6 +1,6 @@
 import os
 
-BASE_DIR = "/home/user/projects/box/"
+BASE_DIR = "/Users/triplec1988/freelance/box"
 
 
 DEBUG=True
@@ -54,3 +54,13 @@ EMAIL_HOST = 'smtp-mail.outlook.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'no-reply@thenicepackage.com' #bulk sender
 EMAIL_HOST_PASSWORD = 'N!cepackage!'
+
+MANDRILL_API_KEY = 'qjV03oxSZLpY9wq8uGhhSw'
+
+EMAIL_HOST = 'smtp.mandrillapp.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'tech@thenicepackage.com'
+EMAIL_HOST_PASSWORD = MANDRILL_API_KEY
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'no-reply@thenicepackage.com'
