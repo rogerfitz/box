@@ -1,6 +1,6 @@
 import os
 
-BASE_DIR = "/Users/triplec1988/freelance/box"
+BASE_DIR = "/home/user/projects/box"
 
 
 DEBUG=True
