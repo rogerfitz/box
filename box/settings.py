@@ -172,11 +172,11 @@ ALLOWED_HOSTS = ['*']
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = ''
 STATIC_URL = '/static/'
-
+'''
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-
+'''
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'aq3lpz23_vqy@02(+3^8k8_+7w%chstavs(1ymt+gc$)$kyjr*'
