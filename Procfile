@@ -1,1 +1,1 @@
-web: python ./manage.py run_gunicorn localhost:80
+web: gunicorn box.wsgi:application
