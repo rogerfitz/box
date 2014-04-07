@@ -1,6 +1,6 @@
 import os
 
-BASE_DIR = "/home/user/projects/box"
+BASE_DIR = '/home/user/projects/box' #os.path.abspath(os.path.join(os.path.dirname( __file__ ), '../box'))
 
 
 DEBUG=True
@@ -75,8 +75,6 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Allow all host headers
 ALLOWED_HOSTS = ['boiling-eyrie-3396', '.boiling-eyrie-3396']
 
-# Static asset configuration
-import os
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
