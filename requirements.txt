@@ -1,7 +1,6 @@
 --allow-unverified PIL
 Django==1.6.1
 Fabric==1.8.3
-MySQL-python==1.2.5
 http://effbot.org/media/downloads/Imaging-1.1.7.tar.gz
 Pillow==2.3.0
 South==0.8.4
