@@ -1,1 +1,1 @@
-web: python manage.py runserver 0:$PORT
+web: python ./manage.py run_gunicorn localhost:8000

@@ -113,6 +113,7 @@ INSTALLED_APPS = (
     'preferences',
     'mail',
     'captcha',
+    'gunicorn',
     #'south',	
 
     # Uncomment the next line to enable the admin:
