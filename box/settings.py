@@ -7,7 +7,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DEBUG=False
+DEBUG=True
 
 # we only need the engine name, as heroku takes care of the rest
 DATABASES = {
