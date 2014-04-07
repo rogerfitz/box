@@ -56,3 +56,7 @@ docs/_build/
 *~
 migrations/
 
+venv
+*.pyc
+staticfiles
+*~
