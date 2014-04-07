@@ -7,6 +7,13 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+# we only need the engine name, as heroku takes care of the rest
+DATABASES = {
+"default": {
+   "ENGINE": "django.db.backends.postgresql_psycopg2",
+}
+}
+
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 
@@ -116,8 +123,8 @@ INSTALLED_APPS = (
     'preferences',
     'mail',
     'captcha',
-    'south',
-    
+    #'south',	
+
     # Uncomment the next line to enable the admin:
     #'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -160,6 +167,44 @@ boxFeedback = (('like', 'Like') , ('ok', 'Ok'), ('dislike', 'Dislike'), ('small'
 
 CAPTCHA_FONT_SIZE = 60
 
+
+# Parse database configuration from $DATABASE_URL
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = 'staticfiles'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+
+# Make this unique, and don't share it with anybody.
+SECRET_KEY = 'aq3lpz23_vqy@02(+3^8k8_+7w%chstavs(1ymt+gc$)$kyjr*'
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp-mail.outlook.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'no-reply@thenicepackage.com' #bulk sender
+EMAIL_HOST_PASSWORD = 'N!cepackage!'
+
+MANDRILL_API_KEY = 'qjV03oxSZLpY9wq8uGhhSw'
+
+EMAIL_HOST = 'smtp.mandrillapp.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = 'tech@thenicepackage.com'
+EMAIL_HOST_PASSWORD = MANDRILL_API_KEY
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'no-reply@thenicepackage.com'
 
 
 from custom_settings import * #set secret key and custom database if needed in a file box/box/custom_settings.py
