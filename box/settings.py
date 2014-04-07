@@ -56,16 +56,6 @@ PROJECT_PATH = os.path.realpath(os.path.join(os.path.dirname(__file__), os.path.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
-
-# URL prefix for static files.
-# Example: "http://example.com/static/", "http://static.example.com/"
-STATIC_URL = '/static/'
-
-# Additional locations of static files
-STATICFILES_DIRS = (
-     PROJECT_PATH + '/static',
-)
 
 # List of finder classes that know how to find static files in
 # various locations.
