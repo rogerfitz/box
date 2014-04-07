@@ -196,5 +196,7 @@ EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = 'no-reply@thenicepackage.com'
 
-
-from custom_settings import * #set secret key and custom database if needed in a file box/box/custom_settings.py
+try:
+	from custom_settings import * #set secret key and custom database if needed in a file box/box/custom_settings.py
+except:
+	pass
