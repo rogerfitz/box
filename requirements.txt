@@ -23,3 +23,4 @@ six==1.5.2
 static==1.0.2
 wsgiref==0.1.2
 raven>=3
+newrelic==2.18.1.15
