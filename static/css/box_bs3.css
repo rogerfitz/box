@@ -170,3 +170,24 @@ p {
     font-size: 18px;
     font-family: 'dosissemibold';
 }
+.loginForm{
+    padding-left: 200px;
+    margin-bottom: 100px;
+}
+.loginForm label {
+    font-size: 18px;
+    font-family: 'dosissemibold';
+}
+.loginForm input {
+    width: 270px;
+    height: 40px;
+    font-size: 18px;
+}
+.loginForm .formButtons {
+    margin-top: 25px;
+}
+.inlineIcon {
+    margin-right: 5px;
+    position: relative;
+    top: 2px;
+}

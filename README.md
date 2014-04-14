@@ -104,14 +104,18 @@ Note 2: You might have touble installing PIL and argparse. See this StackOverflo
 4) Setup Local Django Development
 ---------------------------------
 
-Change the BASE_DIR variable in custom_settings.py:
+Change the BASE_DIR variable in settings.py:
 
     BASE_DIR = "/your/path/to/box"
 
-Next, make sure you have MySQL install. If not signup on Oracle's website and download the correct disk image for Mac or Ubuntu.
+Next, make sure you have PostgreSQL installed. If you're on a Mac you can checkout http://postgresapp.com/, download the application and run the Postgres server locally. If you use Linux or Windows, download it from the Postgres site and follow the instructions to run it locally: http://www.postgresql.org/download/.
 
-    $ sudo mysql
-    mysql> create database box
+Once you have Postgres running, login and create the box db:
+
+    $ sudo psql
+    username=# create database box;
+
+Make sure the database settings are now set to Postres and that you have the proper username and database name configured.
 
 Now you should be able to sync the database and run the development server.
 
