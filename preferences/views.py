@@ -5,19 +5,17 @@ from preferences.forms import PreferencesForm
 
 @login_required
 def index(request):
-	user = User.objects.get(id=request.user.id)
-	profile = user.profile
+	profile = (User.objects.get(id=request.user.id)).profile
 	preferences = profile.preferences
 
-	form = PreferencesForm(instance=preferences)	
-	
 	if request.method == 'POST':
 		form = PreferencesForm(request.POST, instance=preferences)
 		if form.is_valid():	
-			print form.data
-			user.profile.preferences = form.save()
-			user.save()
-			return redirect('/home')
+			form = PreferencesForm(request.POST)
 
+			profile.preferences = form.save()
+			profile.save()
+			return redirect('/home')
+	form = PreferencesForm(instance=preferences)
 
 	return render(request, 'home/editPreferences.html', {'form': form})
