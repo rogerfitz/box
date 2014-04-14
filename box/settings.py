@@ -117,7 +117,7 @@ INSTALLED_APPS = (
     'captcha',
     'gunicorn',
     'raven.contrib.django.raven_compat',
-    #'south',	
+    'south',	
 
     # Uncomment the next line to enable the admin:
     #'django.contrib.admin',

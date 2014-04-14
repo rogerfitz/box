@@ -6,5 +6,4 @@ urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
     url(r'^profiles/', views.editProfile, name='editProfile'),
     url(r'^preferences/', include('preferences.urls')),
-    url(r'^ipn/', views.ipn, name='ipn'),
 )
