@@ -25,7 +25,7 @@ class Preferences(models.Model):
 	fraternity = models.BooleanField(verbose_name="Are you in a fraternity?", choices=yes_no)
 	party = models.BooleanField(verbose_name="Do you like to party?", choices=yes_no)
 	novelty = models.BooleanField(verbose_name="Do you like funny gifts?", choices=yes_no)
-	dip = models.BooleanField(verbose_name="Do you ever chew tobacco?", choices=yes_no)
+	#dip = models.BooleanField(verbose_name="Do you ever chew tobacco?", choices=yes_no)
 	clip_on = models.BooleanField(verbose_name="Does a clip-on bowtie upset you?", choices=yes_no)
 	gf = models.BooleanField(verbose_name="Do you have a special someone that you share your Nice Package with on the regular?", help_text="Yes, we're talking about your dick here", choices=yes_no)
 	#allow user to suggest their own preference (json?)
