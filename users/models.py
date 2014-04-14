@@ -52,5 +52,5 @@ class Profile(models.Model):
 		self.save()
 		return self
 
-class User():#AbstractUser):
-	pass#profile = models.OneToOneField(Profile, related_name='profile', unique=True, blank=True, null=True)
+class User(AbstractUser):
+	profile = models.OneToOneField(Profile, related_name='profile', unique=True, blank=True, null=True)
