@@ -12,13 +12,13 @@ a:hover {text-decoration: none;}
 }
 .mainTitle {
     text-transform: uppercase;
-    font-size: 75px;
-    margin-top: 30px;
+    font-size: 55px;
+    margin-top: 16px;
     letter-spacing: 3px;
 }
 .titleImage {
     position: relative;
-    top: 15px;
+    top: 9px;
 }
 .indexBanner {
     background-color: black;
@@ -85,24 +85,30 @@ a:hover {text-decoration: none;}
     font-family: 'dosissemibold'
 }
 p {
-    font-size: 18px;
+    font-size: 14px;
 }
 .whoIs {
+    font-size: 18px;
     letter-spacing: 5px;
 }
 .thisFor{
+    font-size: 18px;
     letter-spacing: 1px;
 }
 .howDoes {
+    font-size: 18px;
     letter-spacing: 2px;
 }
 .itWork {
+    font-size: 18px;
     letter-spacing: 3px;
 }
 .howDoI {
+    font-size: 18px;
     letter-spacing: 3px;
 }
 .start {
+    font-size: 18px;
     letter-spacing: 7px;
 }
 .whoFor p, .howWorks p, .howStart p {
@@ -115,9 +121,12 @@ p {
     margin-left: auto;*/
     margin-bottom: 10px;
 }
+.enrollIcon {
+    padding-left: 110px;
+}
 .enrollCopy{
-    font-size: 32px;
-    padding-right: 250px;
+    font-size: 28px;
+    padding-right: 60px;
 }
 .footerNav {
     list-style-type: none;
@@ -125,8 +134,22 @@ p {
 }
 .footerNav li {
     display: inline;
-    font-size: 36px;
+    font-size: 22px;
     margin: 10px 25px 0;
+    letter-spacing: 1px;
+}
+.navList {
+    list-style-type: none;
+    margin-top: 15px;
+}
+.settings {
+    font-size: 24px;
+}
+.settings a {
+    color: black;
+}
+.settings a:hover {
+    color: #333333;
 }
 .footerNav a {
     color: white;
@@ -134,10 +157,14 @@ p {
 .footerNav a:hover {
     color: #b79a72;
 }
+.footerImage {
+    position: relative;
+    top: 3px;
+}
 .indexFooter {
     background: url('../bootstrap3/images/PaperTexture.png') top center no-repeat;
     color: white;
-    padding: 50px 0 50px;
+    padding: 15px 0 20px;
     -moz-box-shadow: 0px 7px 55px 4px black;
     -webkit-box-shadow: 0px 7px 55px 4px black;
     box-shadow: 0px 7px 55px 4px black;
@@ -163,27 +190,27 @@ p {
     padding-left: 0px;
 }
 .contactForm{
-    padding-left: 200px;
+    padding-left: 50px;
     margin-bottom: 100px;
 }
 .contactForm label {
     font-size: 18px;
     font-family: 'dosissemibold';
 }
-.loginForm, .signupForm {
-    padding-left: 200px;
+.loginForm, .signupForm, .profileForm {
+    padding-left: 50px;
     margin-bottom: 100px;
 }
-.loginForm label, .signupForm label {
+.loginForm label, .signupForm label, .profileForm label {
     font-size: 18px;
     font-family: 'dosissemibold';
 }
-.loginForm input, .signupForm input {
+.loginForm input, .signupForm input, .profileForm input {
     width: 270px;
     height: 40px;
     font-size: 18px;
 }
-.loginForm .formButtons, .signupForm .formButtons {
+.loginForm .formButtons, .signupForm .formButtons, .profileForm .formButtons {
     margin-top: 25px;
 }
 .inlineIcon {
