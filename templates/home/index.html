@@ -1,137 +1,162 @@
-{% extends 'base.html' %}
+{% extends 'base_bs3.html' %}
 
 {% block body %}
-<div class="row-fluid">
-{% with box=user.profile.current_box %}
-{% if box != None %}
-<h1 class='text-center'>Current Box</h1>
-<table border="1">
-	<tr><td>Delivery Date</td></tr>
-<tr>
-  <td>{{ box.date_delivered }}</td>
-  {% for p in box.products.all %}
-  <td>
-  	<a href={{ p.url }} target="_blank"><img src={{ p.image_url }} height="200" width="150"></a>
-  </td>
-  {% endfor %}
-  <td>	<select onchange="getval(this);">
-	  
-	  <option><center>{% if box.feedback %}{{ box.feedback.all.0 }}{% else %}Review your box!{% endif %}</center></option>
-	  {% for option in boxFeedback %}
-	  <option value='box.{{ box.id }}.{{ option.0 }}'>{{ option.1 }}</option>
-	  {% endfor %}
-	</select>
-  </td>
-  </tr><tr><td></td>
-  {% for p in box.products.all %}
-  <td>
-  	<select onchange="getval(this);">
-	  <option><center>{% if p.feedback %}{{ p.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
-	  {% for option in prodFeedback %}
-	  <option value='product.{{ p.id }}.{{ option.0 }}'>{{ option.1 }}</option>
-	  {% endfor %}
-	</select>
-  </td>
-  {% endfor %}
-</tr>
-</table>
-{% else %}
-{% if user.profile.paid %}
-<h3>{{ user.profile }}, thanks for ordering. You're personalized package will be delivered the second week of March. In the meantime, enjoy this gif. </h3>
-<div class="row text-center"><img src='http://media.giphy.com/media/76dXlFZZEqNH2/giphy.gif'></div>
-{% else %}
-{% if user.profile.city == '' %}
-<h3>Please add your shipping information</h3>
-{% else %}
-{% if user.profile.access_code == "ready" %}
-<h3>Get your Nice Package by paying below.<br>$30 for 2 months</h3>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="L5T723WK43EYU">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-</form>
-<h5>If you've already paid, we will add your payment to the system in one business day.</h5>
-{% else %}
-<h3>Thanks for making an account. We are currently swamped with orders and are working on filling them. We will email you an access code as soon as we are ready for your business. Our current estimate is April.</h3>
-<br>
-<h5>If you already know your access code, enter it here!</h5>
-<form method="post" action="" class='text-center'>{% csrf_token %}
-    {{ access_form.as_p }}
-<input type="submit" value="Submit" />
-</form>
-{% endif %}
-{% endif %}
-{% endif %}
-{% endif %}
-{% endwith %}
-</div>
-<div class="row-fluid">
-{% if user.profile.boxes.all %}
-<h1 class='text-center'><br><br>Past Boxes</h1>
-{% for box in user.profile.boxes.all %}
-<table border="1">
-	<tr><td>Delivery Date</td></tr>
-<tr>
-  <td>{{ box.date_delivered }}</td>
-  {% for p in box.products.all %}
-  <td>
-  	<a href={{ p.url }} target="_blank"><img src={{ p.image_url }} height="200" width="150"></a>
-  </td>
-  {% endfor %}
-  <td>	<!-- Add buttons later
-<button type="button" class="btn btn-default btn-lg" id="up">
-	  <i class="fa fa-thumbs-up fa-lg"></i>
-	</button>
-	<button type="button" class="btn btn-default btn-lg">
-	  <i class="fa fa-angle-up fa-lg"><a href="#"></a></i>
-	</button>
-	<button type="button" class="btn btn-default btn-lg">
-	  <i class="fa fa-thumbs-down fa-lg"></i>
-	</button>-->
-	<select onchange="getval(this);">
-	  
-	  <option><center>{% if box.feedback %}{{ box.feedback.all.0 }}{% else %}Review your box!{% endif %}</center></option>
-	  {% for option in boxFeedback %}
-	  <option value='box.{{ box.id }}.{{ option.0 }}'>{{ option.1 }}</option>
-	  {% endfor %}
-	</select>
-  </td>
-  </tr><tr><td></td>
-  {% for p in box.products.all %}
-  <td>
-  	<select onchange="getval(this);">
-	  <option><center>{% if p.feedback %}{{ p.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
-	  {% for option in prodFeedback %}
-	  <option value='product.{{ p.id }}.{{ option.0 }}'>{{ option.1 }}</option>
-	  {% endfor %}
-	</select>
-  </td>
-  {% endfor %}
-</tr>
-</table>
-{% endfor %}
-{% endif %}
+<div class="col-md-12 profileForm">
+    <div class="container">
+        <div class="col-md-12">
+            {% with box=user.profile.current_box %}
+                {% if box != None %}
+                    <h1 class='text-center'>Current Box</h1>
+                    <table border="1">
+                    	<tr>
+                            <td>Delivery Date</td>
+                        </tr>
+                        <tr>
+                            <td>{{ box.date_delivered }}</td>
+                            {% for p in box.products.all %}
+                              <td>
+                              	<a href={{ p.url }} target="_blank"><img src={{ p.image_url }} height="200" width="150"></a>
+                              </td>
+                            {% endfor %}
+                            <td>	
+                                <select onchange="getval(this);">
+                    	            <option>
+                                        <center>{% if box.feedback %}{{ box.feedback.all.0 }}{% else %}Review your box!{% endif %}</center>
+                                    </option>
+                    	            {% for option in boxFeedback %}
+                    	                <option value='box.{{ box.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                    	            {% endfor %}
+                    	        </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            {% for p in box.products.all %}
+                                <td>
+                              	    <select onchange="getval(this);">
+                            	        <option><center>{% if p.feedback %}{{ p.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                            	        {% for option in prodFeedback %}
+                            	            <option value='product.{{ p.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                            	        {% endfor %}
+                            	    </select>
+                                </td>
+                            {% endfor %}
+                        </tr>
+                    </table>
+                {% else %}
+                    {% if user.profile.paid %}
+                        <h3>{{ user.profile }}, thanks for ordering. You're personalized package will be delivered the second week of March. In the meantime, enjoy this gif. </h3>
+                        <div class="row text-center">
+                            <img src='http://media.giphy.com/media/76dXlFZZEqNH2/giphy.gif'>
+                        </div>
+                    {% else %}
+                        {% if user.profile.city == '' %}
+                            <h3>Please add your shipping information</h3>
+                        {% else %}
+                            {% if user.profile.access_code == "ready" %}
+                                <h3>Get your Nice Package by paying below.<br>$30 for 2 months</h3>
+                                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                    <input type="hidden" name="cmd" value="_s-xclick">
+                                    <input type="hidden" name="hosted_button_id" value="L5T723WK43EYU">
+                                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                                </form>
+                                <h5>If you've already paid, we will add your payment to the system in one business day.</h5>
+                            {% else %}
+                                <h3>Thanks for making an account. We are currently swamped with orders and are working on filling them. We will email you an access code as soon as we are ready for your business. Our current estimate is April.</h3>
+                                <br>
+                                <h5>If you already know your access code, enter it here!</h5>
+                                <form action="" method="post">
+                                    {% with access_form as form %}
+                                        {% include "include_form.html" %}
+                                    {% endwith %}
+                                    <div class="form-actions formButtons">
+                                        <button type="submit" class="btn btn-lg btn-package-opposite">Submit</button>
+                                    </div>
+                                </form>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            {% endwith %}
+        </div>
+        <div class="col-md-12">
+            {% if user.profile.boxes.all %}
+                <h1 class='text-center'><br><br>Past Boxes</h1>
+                {% for box in user.profile.boxes.all %}
+                    <table border="1">
+            	        <tr>
+                            <td>Delivery Date</td>
+                        </tr>
+                        <tr>
+                            <td>{{ box.date_delivered }}</td>
+                            {% for p in box.products.all %}
+                                <td>
+                              	    <a href={{ p.url }} target="_blank"><img src={{ p.image_url }} height="200" width="150"></a>
+                                </td>
+                            {% endfor %}  
+                            <td>	<!-- Add buttons later
+                                    <button type="button" class="btn btn-default btn-lg" id="up">
+                                	  <i class="fa fa-thumbs-up fa-lg"></i>
+                                	</button>
+                                	<button type="button" class="btn btn-default btn-lg">
+                                	  <i class="fa fa-angle-up fa-lg"><a href="#"></a></i>
+                                	</button>
+                                	<button type="button" class="btn btn-default btn-lg">
+                                	  <i class="fa fa-thumbs-down fa-lg"></i>
+                                	</button>-->
+            	                <select onchange="getval(this);">
+            	  
+            	                    <option>
+                                        <center>{% if box.feedback %}{{ box.feedback.all.0 }}{% else %}Review your box!{% endif %}</center>
+                                    </option>
+            	                    {% for option in boxFeedback %}
+            	                        <option value='box.{{ box.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+            	                    {% endfor %}
+            	                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            {% for p in box.products.all %}
+                                <td>
+                              	    <select onchange="getval(this);">
+                            	        <option>
+                                            <center>{% if p.feedback %}{{ p.feedback.all.0 }}{% else %}Review Product{% endif %}</center>
+                                        </option>
+                            	        {% for option in prodFeedback %}
+                            	           <option value='product.{{ p.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                            	        {% endfor %}
+                            	    </select>
+                                </td>
+                            {% endfor %}
+                        </tr>
+                    </table>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
 </div>
 {% endblock %}
+
 {% block scripts %}
-<script type="text/javascript">
-       function getval(sel) {
-	$.ajax({
-	  type: "POST",
-	  url: '/home/',
-	  data: {'data': sel.value, 'csrfmiddlewaretoken': '{{csrf_token}}'},
-	  dataType: "json",
-	  success: sel.value,
-	});
-    	}
- $(document).ready(function() {
+    <script type="text/javascript">
+           function getval(sel) {
+    	$.ajax({
+    	  type: "POST",
+    	  url: '/home/',
+    	  data: {'data': sel.value, 'csrfmiddlewaretoken': '{{csrf_token}}'},
+    	  dataType: "json",
+    	  success: sel.value,
+    	});
+        	}
+     $(document).ready(function() {
 
 
-      /*$(".btn").click(function(){
-         $("#up").effect( "highlight", 
-          {color:"#669966"}, 3000 );
-      });*/
-});
-</script>
+          /*$(".btn").click(function(){
+             $("#up").effect( "highlight", 
+              {color:"#669966"}, 3000 );
+          });*/
+    });
+    </script>
 {% endblock %}

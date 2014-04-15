@@ -8,7 +8,8 @@
     <meta name="author" content="">
 
     <!-- Bootstrap core CSS -->
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="{{ STATIC_URL }}bootstrap3/css/bootstrap.css" rel="stylesheet">
     <!-- <link href='http://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Megrim' rel='stylesheet' type='text/css'> -->
 
@@ -39,16 +40,38 @@
 
     <!-- Wrap all page content here -->
     <div id="wrap">
-
       <!-- Begin page content -->
       <div class="wrapper">
         <div class="col-md-12 indexHeader">
             <div class="container">
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <h1 class="mainTitle">the nice package</h1>
                 </div>
                 <div class="col-md-4">
                     <a href="{% url 'index' %}"><img src="{{ STATIC_URL }}bootstrap3/images/Nice-Package-Logo.png" class="img-responsive titleImage" alt="Responsive image"></a>
+                </div>
+                <div class="col-md-1">
+                  {% if user.is_authenticated %}
+                    <ul class="navList pull-right">
+                      <li class="dropdown settings">
+                          <a href="#" class="settings-edit dropdown-toggle" data-toggle="dropdown">
+                              <span class="ss-settings ss-symbolicons-block"></span>
+                          </a>
+                          <ul class="dropdown-menu">
+                          {% if user.is_staff %}
+                              <li><a href='/boxman/boxes/'>Packages</a></li>
+                              <li><a href='/boxman/products/'>Products</a></li>
+                              <li><a href='/boxman/users/'>Users</a></li>
+                          {% else %}
+                              <li><a href='/home/'>Dashboard</a></li>
+                              <li><a href='/home/preferences/'>Preferences</a></li>
+                              <li><a href='/home/profiles/'>Account Info</a></li>
+                          {% endif %}
+                              <li><a href='/logout'>Logout</a></li>
+                          </ul>
+                      </li>
+                    </ul>
+                  {% endif %}
                 </div>
             </div>
         </div>
@@ -63,7 +86,7 @@
           <div class="col-md-12 indexFooter">
               <div class="container">
                   <div class="col-md-2">
-                      <a href="{% url 'index' %}"><img src="{{ STATIC_URL }}bootstrap3/images/Nice-Package-Logo-White.png" class="img-responsive titleImage" alt="Responsive image"></a>
+                      <a href="{% url 'index' %}"><img src="{{ STATIC_URL }}bootstrap3/images/Nice-Package-Logo-White.png" class="img-responsive footerImage" alt="Responsive image"></a>
                   </div>
                   <div class="col-md-10">
                       <ul class="footerNav">
