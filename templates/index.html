@@ -1,11 +1,24 @@
 {% extends "base_bs3.html" %}
 
+{% block header %}
+<div class="col-md-12 indexHeader">
+    <div class="container">
+        <div class="col-md-8">
+            <h1 class="mainTitle">the nice package</h1>
+        </div>
+        <div class="col-md-4">
+            <a href="{% url 'index' %}"><img src="{{ STATIC_URL }}bootstrap3/images/Nice-Package-Logo.png" class="img-responsive titleImage" alt="Responsive image"></a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
 {% block body %}
     
     <div class="col-md-12 indexBanner">
         <div class="container">
             <h1 class="bannerHeader">WELCOME to THE NICE PACKAGE</h1>
-	    <h2 class="bannerSub">A care package for college guys, by college guys</h2>
+	        <h2 class="bannerSub">A care package for college guys, by college guys</h2>
             <a href='/login'><button type="button" class="btn btn-lg btn-package btn-login">LOGIN</button></a>
             <a href='/boxman/users/register/'><button type="button" class="btn btn-lg btn-package btn-signup">SIGN UP</button></a>
         </div>
