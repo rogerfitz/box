@@ -6,7 +6,6 @@ from users.models import User, Profile
 from products.models import Product, ProductFeedback
 from box.settings import boxFeedback, prodFeedback
 from django.core.mail import send_mail
-#import logging
 
 @login_required
 def index(request):
@@ -18,7 +17,6 @@ def index(request):
 		return addProfile(request)
 	
 	
-
 	if request.method == 'POST':
 	  try:
 		obj, id, feedback = request.POST['data'].split('.')
@@ -46,7 +44,6 @@ def index(request):
 	  except:
 		try:
 			profile = (User.objects.get(id=request.user.id)).profile
-			form = AccessForm(request.POST, instance=profile)
 			if request.method == 'POST':
 				if form.is_valid():
 					user = User.objects.get(id=request.user.id)		
@@ -56,8 +53,8 @@ def index(request):
 			
 		except:
 			pass
-	form = AccessForm(request.POST)
-	return render(request, 'home/index.html', {'user': user, 'boxFeedback': boxFeedback, 'prodFeedback': prodFeedback, 'access_form': form})
+	count = (Profile.objects.filter(paid=True)).count()
+	return render(request, 'home/index.html', {'user': user, 'boxFeedback': boxFeedback, 'prodFeedback': prodFeedback, 'count': count})
 
 @login_required
 def addProfile(request):
@@ -84,17 +81,9 @@ def editProfile(request):
 			user.profile = form.save()
 			user.save()
 			return redirect('/home')
+		return render(request, 'home/editProfile.html', {'form': form})
+
 	form = FullProfileForm(instance=profile)
 	return render(request, 'home/editProfile.html', {'form': form})
-
-def ipn(request):#don't work
-	get = request.GET
-	post = request.POST
-	f = open('/home/ubuntu/projects/box/ipn.log', 'w')
-	f.write('test')
-	#f.write(get)
-	#f.write(post)
-	f.close()
-	return render(request, 'debug.html', {'get': get, 'post': post})
 
 

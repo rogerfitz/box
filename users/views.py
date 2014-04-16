@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from users.models import User, Profile
-from users.forms import UserForm
+from users.forms import UserForm, UserCreationForm
 from boxes.models import Box
 from products.models import Product
 from django.contrib.auth.decorators import user_passes_test

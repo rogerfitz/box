@@ -129,7 +129,7 @@ INSTALLED_APPS = (
     'captcha',
     'gunicorn',
     'raven.contrib.django.raven_compat',
-    #'south',	
+    #'south',   
 
     # Uncomment the next line to enable the admin:
     #'django.contrib.admin',
@@ -218,6 +218,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = 'no-reply@thenicepackage.com'
 
 try:
-	from custom_settings import * #set secret key and custom database if needed in a file box/box/custom_settings.py
+    from custom_settings import * #set secret key and custom database if needed in a file box/box/custom_settings.py
 except:
-	pass
+    pass

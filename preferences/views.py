@@ -12,7 +12,7 @@ def index(request):
 		form = PreferencesForm(request.POST, instance=preferences)
 		if form.is_valid():	
 			form = PreferencesForm(request.POST)
-			
+
 			profile.preferences = form.save()
 			profile.save()
 			return redirect('/home')
