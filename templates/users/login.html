@@ -1,27 +1,29 @@
-{% extends "base.html" %}
+{% extends "base_bs3.html" %}
 
 {% block body %}
-<div id="login" class="login">
-  <form class="form-horizontal" name="LoginForm" action="{% url 'django.contrib.auth.views.login' %}" method="post">
-    {% csrf_token %}
-    <div class="control-group">
-      <label class="control-label" for="username">Email</label>
-      <div class="controls">
-	<input type="text" id="username" name="username"  class="text-input" placeholder="Email">
-      </div>
+    <div class="col-md-12 loginForm">
+        <div class="container">         
+            <form class="form-horizontal" name="LoginForm" action="{% url 'django.contrib.auth.views.login' %}" method="post">
+              {% csrf_token %}
+              <div class="control-group">
+                <label class="control-label" for="username"><span class="ss-user ss-symbolicons-block inlineIcon"></span>Username</label>
+                <div class="controls">
+          	       <input type="text" id="username" name="username"  class="text-input" placeholder="example@example.com">
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="password"><span class="ss-key ss-symbolicons-block inlineIcon"></span>Password</label>
+                <div class="controls">
+          	       <input type="password" name="password" id="password" placeholder="Password">
+                </div>
+              </div>
+              <div class="control-group formButtons">
+                <div class="controls">
+          	       <button type="submit" class="btn btn-lg btn-package-opposite">Login</button>
+          	       <a href="/boxman/users/register/"><span class="btn btn-lg btn-package-opposite">Create Account</span></a>
+                </div>
+              </div>
+            </form>
+        </div>
     </div>
-    <div class="control-group">
-      <label class="control-label" for="password">Password</label>
-      <div class="controls">
-	<input type="password" name="password" id="password" placeholder="Password">
-      </div>
-    </div>
-    <div class="control-group">
-      <div class="controls">
-	<button type="submit" class="btn">Login</button>
-	<a class="btn" href="{% url 'users.views.register' %}">Create Account</a>
-      </div>
-    </div>
-  </form>
-</div>
 {% endblock %}
