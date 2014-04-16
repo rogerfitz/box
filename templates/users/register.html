@@ -1,11 +1,17 @@
-{% extends 'base.html' %}
+{% extends "base_bs3.html" %}
 
 {% block body %}
-<h2>The website looks different here. We are working on implementing our new design throughout the website</h2>
-<br>
-<h5 class='text-left'>Make your username your email</h5>
-<form method="post" action="" class='text-left'>{% csrf_token %}
-    {{ form.as_p}}
-<input type="submit" value="Create the account" />
-</form>
+<div class="col-md-12 signupForm">
+    <div class="container">
+        <h2>Make your username your email</h5>
+        <form action="" method="post">
+            {% with form as form %}
+                {% include "include_form.html" %}
+            {% endwith %}
+            <div class="form-actions formButtons">
+                <button type="submit" class="btn btn-lg btn-package-opposite">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
 {% endblock %}

@@ -25,31 +25,22 @@
     <!-- Wrap all page content here -->
     <div class = "container">
 	<div class = "navbar">
-            <nav class = "navbar navbar-inverse" id = "box-nav">
+    <nav class = "navbar navbar-inverse" id = "box-nav">
 	    <ul>
-                <!-- <li><a class = "active" href = "/">Home</a></li> -->
-		
-		
-	        <!--<li class="active"><a href='/surveys/'>Preferences</a></li>
-	        <!---->
-		{% if user.is_authenticated %}
-		{% if user.is_staff %}
-		<li class="active"><a href='/boxman/boxes/'>Packages</a></li>
-	        <li class="active"><a href='/boxman/products/'>Products</a></li>
-	        <li class="active"><a href='/boxman/users/'>Users</a></li>
-		{% else %}
-		<li class="active"><a href='/home/'>Dashboard</a></li>
-		<li class="active"><a href='/home/preferences/'>Preferences</a></li>
-		<li class="active"><a href='/home/profiles/'>Account Info</a></li>
-		{% endif %}
-	        <li class="active"><a href='/logout'>Logout</a></li>
-		{% else %}
-		<li class="text-hide">                    </li>
-		<li><a class = "active" href = "/boxman/users/register/">Create Account</a></li>
-		<li class="active"><a href='/login'>Login</a></li>
-		{% endif %}
+    		{% if user.is_authenticated %}
+    		  {% if user.is_staff %}
+          		<li class="active"><a href='/boxman/boxes/'>Packages</a></li>
+    	        <li class="active"><a href='/boxman/products/'>Products</a></li>
+    	        <li class="active"><a href='/boxman/users/'>Users</a></li>
+		      {% else %}
+          		<li class="active"><a href='/home/'>Dashboard</a></li>
+          		<li class="active"><a href='/home/preferences/'>Preferences</a></li>
+          		<li class="active"><a href='/home/profiles/'>Account Info</a></li>
+		      {% endif %}
+	         <li class="active"><a href='/logout'>Logout</a></li>
+		    {% endif %}
 	    </ul>
-            </nav>
+    </nav>
 	</div>
      </div>
 		<div class= "container">
