@@ -1,5 +1,6 @@
 {% extends "base_bs3.html" %}
 
+<div class="container">
 {% block header %}
 <div class="col-md-12 indexHeader">
     <div class="container">
@@ -14,7 +15,6 @@
 {% endblock %}
 
 {% block body %}
-    
     <div class="col-md-12 indexBanner">
         <div class="container">
             <h1 class="bannerHeader">WELCOME to THE NICE PACKAGE</h1>
@@ -22,6 +22,17 @@
             <a href='/login'><button type="button" class="btn btn-lg btn-package btn-login">LOGIN</button></a>
             <a href='/boxman/users/register/'><button type="button" class="btn btn-lg btn-package btn-signup">SIGN UP</button></a>
         </div>
+    </div>
+  <div class="container">
+    <!--<div class="col-md-12 pictureBanner">
+	<img src="http://static.squarespace.com/static/52c61aeee4b0f4d7d4c1d4bf/t/531740e9e4b0d5b562173b1d/1394032874602/Second_Bed_Shark_Tank.jpg" >
+    </div>-->
+    <div class="col-md-12 pictureSub">
+	<p class="picture-sub-text">We started The Nice Package because care packages can be so much better than just your mom sending you candy.</p>
+	<p class="picture-sub-text">Being in college you have to spend money on things like razors, food, swag, and booze/mixer... not to mention the things you always "forget" like condoms. Even still when you go out and buy these things, you're shopping at overpriced campus stores with limited selection.</p>
+	<p class="picture-sub-text">We'll send you <a href="http://www.bombassocks.com">Dope Socks</a>, connect you with people like <a href="http://www.thecocksmanclub.com">The Cocksman Club</a>, find your new favorite razor <a href="http://www.harrys.com">Harry's</a>, snacks, glassware, <a href="http://www.teroforma.com/shop/our-designers/vermont-soapstone-workshop-vermont/whisky-stones.html">Manly Things</a>, as well as the occasional <a href="http://www.dudeproducts.com/">Butt Wipe</a>.</p>
+        <p class="picture-sub-text">The Nice Package connects you with cool products personalized to your interests. All for a cheap price. Each box is $20 and contains over $40 dollars of personalized items.</p>
+	<p class="picture-sub-text">Every guy wants to have a Nice Package. Now you finally can.</p>
     </div>
     <div class="col-md-12 whoFor">
         <div class="container">
@@ -76,7 +87,10 @@
             <div class="col-md-9">
                 <a href='/boxman/users/register/'><img src="{{ STATIC_URL }}bootstrap3/images/Enroll-Icon.png" class="img-responsive enrollIcon" alt="Responsive image"></a>
                 <p class="enrollCopy">$35 for your first two months!</p>
+		<p class="enrollCall">Singup by 4/18 to get in the next round. Spots are limited</p>
             </div>
         </div>
     </div>
+  </div>
 {% endblock %}
+</div>
