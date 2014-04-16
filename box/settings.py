@@ -10,10 +10,22 @@ MANAGERS = ADMINS
 DEBUG=True
 
 # we only need the engine name, as heroku takes care of the rest
+# DATABASES = {
+#     "default": {
+#        "ENGINE": "django.db.backends.postgresql_psycopg2",
+#     }
+# }
+
 DATABASES = {
-"default": {
-   "ENGINE": "django.db.backends.postgresql_psycopg2",
-}
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'box',                      # Or path to database file if using sqlite3.
+        # The following settings are not used with sqlite3:
+        'USER': 'triplec1988',
+        'PASSWORD': '',
+        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'PORT': '',                      # Set to empty string for default.
+    }
 }
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
@@ -172,7 +184,8 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
 
-BASE_DIR = '/app'
+# BASE_DIR = '/app'
+BASE_DIR = "/Users/triplec1988/freelance/box"
 STATIC_ROOT = 'staticfiles'
 STATIC_URL = '/static/'
 
