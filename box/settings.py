@@ -7,27 +7,16 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DEBUG=True
+BASE_DIR = '/app'
 
 # we only need the engine name, as heroku takes care of the rest
-# DATABASES = {
-#     "default": {
-#        "ENGINE": "django.db.backends.postgresql_psycopg2",
-#     }
-# }
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'box',                      # Or path to database file if using sqlite3.
-        # The following settings are not used with sqlite3:
-        'USER': 'triplec1988',
-        'PASSWORD': '',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-        'PORT': '',                      # Set to empty string for default.
-    }
+"default": {
+   "ENGINE": "django.db.backends.postgresql_psycopg2",
+}
 }
 
+STATIC_URL = '/static/'
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
 
@@ -129,7 +118,7 @@ INSTALLED_APPS = (
     'captcha',
     'gunicorn',
     'raven.contrib.django.raven_compat',
-    #'south',   
+    'south',	
 
     # Uncomment the next line to enable the admin:
     #'django.contrib.admin',
@@ -184,14 +173,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
 
-# BASE_DIR = '/app'
-BASE_DIR = "/Users/triplec1988/freelance/box"
-STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
 
 TEMPLATE_DIRS = (
     os.path.join(BASE_DIR, 'templates'),
@@ -218,6 +200,14 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = 'no-reply@thenicepackage.com'
 
 try:
-    from custom_settings import * #set secret key and custom database if needed in a file box/box/custom_settings.py
+	from custom_settings import * #set secret key and custom database if needed in a file box/box/custom_settings.py
 except:
-    pass
+	DEBUG=False
+	
+	STATIC_ROOT = 'static/'
+
+	STATICFILES_DIRS = (
+	    os.path.join(BASE_DIR, 'static'),
+	)
+
+
