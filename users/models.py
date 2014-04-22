@@ -26,7 +26,7 @@ class Profile(models.Model):
 	preferences = models.OneToOneField(Preferences, blank=True, null=True)
 
 	def __unicode__(self):
-        	return self.first_name+' '+self.last_name
+			return self.first_name+' '+self.last_name
 
 	def ship(self):
 		if self.paid is True:
@@ -51,6 +51,9 @@ class Profile(models.Model):
 		self.box_to_ship = None
 		self.save()
 		return self
+
+	def fullname(self):
+		return self.first_name + " " + self.last_name
 
 class User(AbstractUser):
 	profile = models.OneToOneField(Profile, related_name='profile', unique=True, blank=True, null=True)
