@@ -25,6 +25,7 @@ a{
     font-family: 'dosislight';
     text-align: center;
     padding: 12px 0 0px;
+    margin-top: 0px;
     margin-bottom: 50px;
 }
 .mainHeader .mainTitle {
@@ -63,6 +64,14 @@ a{
 
 .picture-sub-text {
     font-size: 24px;
+}
+
+.question {
+    font-size: 26px;
+}
+
+.answer {
+    font-size: 20px;
 }
 
 .bannerHeader, .bannerSub {
@@ -181,6 +190,7 @@ p {
     display: inline;
     font-size: 22px;
     margin: 10px 25px 0;
+    padding-left: 0px;
     letter-spacing: 1px;
 }
 .navList {
@@ -210,6 +220,7 @@ p {
     background: url('../bootstrap3/images/PaperTexture.png') top center no-repeat;
     color: white;
     padding: 15px 0 20px;
+    margin-top: 55px;
     -moz-box-shadow: 0px 7px 55px 4px black;
     -webkit-box-shadow: 0px 7px 55px 4px black;
     box-shadow: 0px 7px 55px 4px black;
@@ -238,6 +249,9 @@ p {
     padding-left: 50px;
     margin-bottom: 100px;
 }
+.col-md-2 {
+    padding-right: 0px;
+}
 .contactForm label {
     font-size: 18px;
     font-family: 'dosissemibold';
@@ -262,4 +276,8 @@ p {
     margin-right: 5px;
     position: relative;
     top: 2px;
+}
+
+.text {
+    font-size: 22px;
 }

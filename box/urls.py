@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^privacy/$', views.privacy_policy, name='privacy'),
     url(r'^careers/$', views.careers, name='careers'),
     url(r'^about/$', views.about, name='about'),
+    url(r'^faq/$', views.faq, name='faq'),
     url(r'^contact/$', views.contact, name='contact'),
     url(r'^contact/complete/$', views.contact_complete, name='contact_complete'),
 )

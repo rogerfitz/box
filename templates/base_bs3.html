@@ -46,7 +46,7 @@
           <div class="col-md-12 mainHeader">
               <div class="container">
                   <div class="col-md-2">
-                      <a href='/home/'><img src="{{ STATIC_URL }}bootstrap3/images/Nice-Package-Logo-Brown.png" class="img-responsive titleImage" alt="Responsive image"></a>
+                      <a href='/'><img src="{{ STATIC_URL }}bootstrap3/images/Nice-Package-Logo-Brown.png" class="img-responsive" alt="Responsive image"></a>
                   </div>
                   <div class="col-md-9">
                       <h1 class="mainTitle">the nice package</h1>
@@ -93,11 +93,12 @@
                   <div class="col-md-10">
                       <ul class="footerNav">
                           <li><a href="{% url 'about' %}">About Us</a></li>
+			  <li><a href="{% url 'faq' %}">FAQ</a></li>
                           <li><a href="{% url 'careers' %}">Careers</a></li>
                           <li><a href="{% url 'privacy' %}">Legal</a></li>
                           <li><a href="{% url 'contact' %}">Contact</a></li>
-                          <li><a href="https://www.facebook.com/thenicepackage"><span class="ss-facebook ss-social-regular social-icon facebook"></span></a></li>
-                          <li><a href="https://twitter.com/TheNicePackage"><span class="ss-twitter ss-social-regular social-icon twitter"></span></a></li>
+                          <li><a href="https://www.facebook.com/thenicepackage"><span class="ss-facebook ss-social-regular social-icon facebook"></span></a>&nbsp;
+                          <a href="https://twitter.com/TheNicePackage"><span class="ss-twitter ss-social-regular social-icon twitter"></span></a></li>
                       </ul>
                   </div>
               </div>
