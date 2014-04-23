@@ -7,7 +7,7 @@ from django import forms
 import datetime
 
 class UserForm(UserCreationForm):
-	captcha = CaptchaField()
+	#captcha = CaptchaField()
 	
 	def __init__(self, *args, **kwargs):
 		super(UserForm, self).__init__(*args, **kwargs)
