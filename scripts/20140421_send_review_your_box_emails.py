@@ -35,7 +35,7 @@ def review_your_box(user):
         logging.exception(e)
 
 def main():
-    users = # SOME WAY TO GET USERS YOU JUST SHIPPED TO
+    users = []# SOME WAY TO GET USERS YOU JUST SHIPPED TO
     for user in users:
         review_your_box(user)
 
