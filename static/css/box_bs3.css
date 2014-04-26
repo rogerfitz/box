@@ -245,7 +245,7 @@ p {
     margin-left: 15px;
 }
 .paddingLeftZero {
-    
+    padding-left: 0;
 }
 .contactForm{
     padding-left: 50px;
