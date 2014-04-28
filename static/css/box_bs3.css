@@ -25,6 +25,7 @@ a{
     font-family: 'dosislight';
     text-align: center;
     padding: 12px 0 0px;
+    margin-top: 0px;
     margin-bottom: 50px;
 }
 .mainHeader .mainTitle {
@@ -63,6 +64,14 @@ a{
 
 .picture-sub-text {
     font-size: 24px;
+}
+
+.question {
+    font-size: 26px;
+}
+
+.answer {
+    font-size: 20px;
 }
 
 .bannerHeader, .bannerSub {
@@ -110,18 +119,22 @@ a{
     margin-left: 10px;
 }
 .whoFor, .howWorks, .howStart {
-    margin-bottom: 100px;
+    margin-bottom: 40px;
     text-align: center;
 }
 .whoFor .col-md-2, .howWorks .col-md-2, .howStart .col-md-2 {
     font-size: 26px;
     padding-top: 60px;
+    text-align: center;
 }
 .whoFor .col-md-3, .howWorks .col-md-3 {
-    width: 23%;
+    text-align: center;
+    margin-bottom: 20px;
 }
-.howDesc p {
+.howDesc {
+    margin-bottom: 20px;
     font-family: 'dosissemibold'
+    
 }
 p {
     font-size: 18px;
@@ -150,7 +163,7 @@ p {
     font-size: 18px;
     letter-spacing: 7px;
 }
-.whoFor p, .howWorks p, .howStart p {
+.whoFor p, .howWorks p p {
     margin-bottom: 0px;
     margin-right: 30px;
 }
@@ -161,16 +174,14 @@ p {
     margin-bottom: 10px;
 }
 .enrollIcon {
-    padding-left: 110px;
+   
 }
 .enrollCopy{
     font-size: 28px;
-    padding-right: 60px;
 }
 
 .enrollCall{
     font-size: 18px;
-    padding-right: 60px;
 }
 
 .footerNav {
@@ -181,6 +192,7 @@ p {
     display: inline;
     font-size: 22px;
     margin: 10px 25px 0;
+    padding-left: 0px;
     letter-spacing: 1px;
 }
 .navList {
@@ -210,6 +222,7 @@ p {
     background: url('../bootstrap3/images/PaperTexture.png') top center no-repeat;
     color: white;
     padding: 15px 0 20px;
+    margin-top: 55px;
     -moz-box-shadow: 0px 7px 55px 4px black;
     -webkit-box-shadow: 0px 7px 55px 4px black;
     box-shadow: 0px 7px 55px 4px black;
@@ -232,11 +245,14 @@ p {
     margin-left: 15px;
 }
 .paddingLeftZero {
-    padding-left: 0px;
+    padding-left: 0;
 }
 .contactForm{
     padding-left: 50px;
     margin-bottom: 100px;
+}
+.col-md-2 {
+    padding-right: 0px;
 }
 .contactForm label {
     font-size: 18px;
@@ -262,4 +278,17 @@ p {
     margin-right: 5px;
     position: relative;
     top: 2px;
+}
+
+.img-responsive {
+    margin: 0 auto;
+}
+
+.icon-sub, .enrollCall {
+    width: 100%;
+    text-align: center;
+}
+
+.text {
+    font-size: 22px;
 }

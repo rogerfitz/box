@@ -1,0 +1,56 @@
+{% extends "base_bs3.html" %}
+
+{% block body %}
+    <div class="col-md-12">
+        <div class="container">
+            <h2>FAQ's</h2>
+<p class="question">
+What will you send me?
+</p><p class="answer">
+Based on your preferences, we will send you anything we think you'd like. We work with vendors to discover the best and coolest new products and tailor that to you. We'll send you <a href="http://www.bombassocks.com">Dope Socks</a>, connect you with people like <a href="http://www.thecocksmanclub.com">The Cocksman Club</a>, find your new favorite <a href="http://www.harrys.com">razor</a>, stop you from having a <a href="http://ficksdrink.com/#/home">hangover</a>, give you essential <a href="http://www.teroforma.com/shop/the-perfect-gift/gifts-for-design-lovers/whisky-stones-whisky-lover-set.html">Manly Things</a>, as well as the occasional <a href="http://www.dudeproducts.com/">Butt Wipe</a>. Whatever floats your boat, whatever knocks your socks, or whatever rocks her box, we'll send it to you.
+</p><p class="question">
+What type of preferences do you ask for?
+</p><p class="answer">
+<a href="/boxman/users/register/">Sign Up</a> and you'll see... for freeeeee!!!!
+</p><p>
+*We're quite liberal with letting you learn more The Nice Package and its juicy features
+</p><p class="question">
+Where do you find your products?
+</p>
+<p class="answer">We do our best to discover products from places like <a href="http://sharktanksuccess.blogspot.com/">Shark Tank</a>, <a href="http://uncrate.com/wanted/">Uncrate</a>, <a href="http://www.dudeiwantthat.com/">DudeIWantThat.com</a>, and <a href="http://gentsamongmen.com/">GentsAmongMen.com</a>. We really appreciate our customers input and if you'd like to suggest a product or see if we already carry it please <a href={% url 'box.views.contact' %}>send us a message</a>.
+</p><p class="question">
+How much does it cost?
+</p><p class="answer">
+Each package is $20 and contains $40+ of items tailored towards your preferences. We have a special that's $35 for your first two months (two packages). 
+</p><p class="question">
+Is there free shipping?
+</p><p class="answer">
+We love getting around for our customers and currently we offer free shipping to Champaign and Urbana Illinois. Shipping is $5 per package for all other areas. 
+</p><p class="question">
+This seems like a hard problem. How do you do it?
+</p><p class="answer">
+Indeed it is but what if you I told you The Nice Package works best when it's hard.
+</p><p class="question">
+Can I buy for someone else?
+</p><p class="answer">
+We've gotten a lot of requests for this. When you sign up, fill out the information as best you can about the recipient. In the "Addr2" part type "gift". (We are working on adding a proper gift feature and it should be up later today).
+</p><p class="question">
+Is this a subscription service?
+</p><p class="answer">
+Yes and no. The Nice Package gets better and more personalized month after month by listening to your feedback. We encourage people to signup for multiple months but we won't charge you on a recurring basis. If you only want to buy as a gift or just try it out for a month that's completely ok. 
+</p><p class="question">
+What if I don't like what I'm sent
+</p><p class="answer">
+We swear The Nice Package doesn't dissapoint and if it does please <a href={% url 'box.views.contact' %}>send us a message</a> or contact our CEO directly <a href="mailto:matteo@thenicepackage.com">matteo@thenicepackage.com</a>. We care deeply about customer satisfaction and The Nice Package is here to please. We will make damn sure that your next Nice Package experience is amazing and offer you great customer service on a case by case basis. 
+</p><p class="question">
+How do I signup?
+</p><p class="answer">
+<a href='/boxman/users/register/'><img src="{{ STATIC_URL }}bootstrap3/images/Enroll-Icon.png" class="img-responsive" alt="Responsive image"></a>
+</p><p class="question">
+I have a question not answered here
+</p><p class="answer">
+Please <a href={% url 'box.views.contact' %}>send us a message</a>.
+</p>
+  </div>
+    </div>
+{% endblock %}
