@@ -3,6 +3,7 @@ from users.models import User, Profile
 from users.forms import UserForm, UserCreationForm
 from boxes.models import Box
 from products.models import Product
+from preferences.models import Preferences
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.views import logout_then_login
 from django.contrib.auth import authenticate, login
@@ -115,4 +116,12 @@ def register(request):
 @user_passes_test(lambda u: u.is_superuser, login_url='/login')
 def profile(request):
 	users = User.objects.order_by('username')
-	return render(request, 'users/list.html', {'users': users})
+	return render(request, 'admin/users/list.html', {'users': users})
+
+def detail(request, user_id):
+	user = User.objects.get(id=user_id)
+	profile = user.profile
+	profile_set = Profile.objects.filter(id=profile.id)
+	prefs = profile.preferences
+	
+	return render(request, 'admin/users/detail.html', {'profile_set': profile_set, 'prefs': prefs})

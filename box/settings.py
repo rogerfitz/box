@@ -85,7 +85,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 "django.core.context_processors.tz",
 "django.contrib.messages.context_processors.messages",
 'django.core.context_processors.request',
+'django.core.context_processors.request',
 )
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -118,6 +120,8 @@ INSTALLED_APPS = (
     'captcha',
     'gunicorn',
     'raven.contrib.django.raven_compat',
+    'django_tables2',
+    'scripts',
     'south',	
 
     # Uncomment the next line to enable the admin:

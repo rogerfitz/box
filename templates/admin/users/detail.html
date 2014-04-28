@@ -1,0 +1,10 @@
+{% extends 'admin/base.html' %}
+
+{% block body %}
+{% load render_table from django_tables2 %}
+	{% render_table profile_set %}
+	<table border="1">
+	<tr><td>Shirt Size</td><td>Underwear Type</td><td>Underwear Size</td><td>Hobby1</td><td>Hobby2</td><td>Hobby3</td><td>Favorite Alcohol</td><td>Hometown</td><td>adj1</td><td>adj2</td><td>adj3</td><td>Hair?</td><td>Athletic</td><td>Fraternity</td><td>Party</td><td>Novelty</td><td>Do you dip</td><td>Clip-On Offensive</td><td>Regular Sex</td></tr>
+	<tr><td>{{ prefs.shirt_size }}</td><td>{{ prefs.underwear_type }}</td><td>{{ prefs.underwear_size }}</td><td>{{ prefs.hobby1 }}</td><td>{{ prefs.hobby2 }}</td><td>{{ prefs.hobby3 }}</td><td>{{ prefs.alcohol }}</td><td>{{ prefs.hometown }}</td><td>{{ prefs.adj1 }}</td><td>{{ prefs.adj2 }}</td><td>{{ prefs.adj3 }}</td><td>{{ prefs.hair }}</td><td>{{ prefs.sports }}</td><td>{{ prefs.fraternity }}</td><td>{{ prefs.party }}</td><td>{{ prefs.dip }}</td><td>{{ prefs.novelty }}</td><td>{{ prefs.clip_on }}</td><td>{{ prefs.gf }}</td></tr>
+	</table>
+{% endblock %}

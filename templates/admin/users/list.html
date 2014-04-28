@@ -2,9 +2,9 @@
 
 {% block body %}
 <table border="1">
-	<tr><td>Name</td><td>Email</td><td>Address</td><td>Current Box</td><td>Price</td><td>Preferences</td><td>Box to Ship</td><td>Paid</td><td>Actions</td><td>Delete</td></tr>
+	<tr><td>Name</td><td>Email</td><td>Address</td><td>Detail</td><td>Box to Ship</td><td>Paid</td><td>Actions</td><td>Delete</td></tr>
 {% for u in users %}
-	<tr><td>{{ u.profile.first_name }} {{ u.profile.last_name }}</td><td>{{ u.username }}</td><td>{{ u.profile.addr1 }}<br>{% if "" == u.profile.addr2 %}{{ u.profile.addr2 }}<br>{% endif %}{{ u.profile.city }}, {{ u.profile.state }}</td><td>{{ u.profile.current_box }}</td><td>${{ u.profile.box_to_ship.price }}</td><td><a href="{% url 'preferences' u.id %}">Preferences</a><td>{% if u.profile.box_to_ship %}{{ u.profile.box_to_ship }}{% else %}<a href="{% url 'assignBox' u.profile.id %}">Assign</a>{% endif %}</td><td>{% if u.profile.paid %}Paid{% else %}Not Paid{% endif %}</td>
+	<tr><td>{{ u.profile.first_name }} {{ u.profile.last_name }}</td><td>{{ u.username }}</td><td>{{ u.profile.addr1 }}<br>{% if "" == u.profile.addr2 %}{{ u.profile.addr2 }}<br>{% endif %}{{ u.profile.city }}, {{ u.profile.state }}</td><td><a href="{% url 'detail' u.id %}">Detail</a><td>{% if u.profile.box_to_ship %}{{ u.profile.box_to_ship }}{% else %}<a href="{% url 'assignBox' u.profile.id %}">Assign</a>{% endif %}</td><td>{% if u.profile.paid %}Paid{% else %}Not Paid{% endif %}</td>
 	<td>
 	<select onchange="getval(this);">
 	  <option><center>----------</center></option>
