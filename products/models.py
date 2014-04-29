@@ -12,6 +12,8 @@ class ProductFeedback(models.Model):
 
 class Product(models.Model):
 	name = models.CharField(max_length=200)
+	company = models.CharField(max_length=200, blank=True, null=True, default=None)
+	product_line = models.CharField(max_length=200, blank=True, null=True, default=None)
 	url = models.CharField(max_length=200)
 	price = models.DecimalField(max_digits=5, decimal_places=2)
 	price_per_box = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
