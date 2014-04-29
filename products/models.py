@@ -1,6 +1,7 @@
 from django.db import models
 from box.settings import prodFeedback
 from attr.models import ProductAttr, ProductType, Vertical
+from django import forms
 
 class ProductFeedback(models.Model):
 	feedback = models.CharField(max_length=20, choices=prodFeedback)
@@ -15,6 +16,7 @@ class Product(models.Model):
 	price = models.DecimalField(max_digits=5, decimal_places=2)
 	price_per_box = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
 	image_url = models.CharField(max_length=200, null=True)
+	description = models.CharField(max_length=300)
 
 	duration_in_weeks = models.IntegerField()
 
