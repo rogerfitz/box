@@ -14,7 +14,8 @@ import traceback
 def index(request):
 	#sort by state
 	error='error'
-	users = User.objects.exclude(is_superuser=True).exclude(profile_id__isnull=True)
+	users = User.objects.exclude(is_superuser=True).exclude(profile_id__isnull=True).order_by('profile__paid', 'date_joined', 'profile__last_name').reverse()
+
 
 	if request.method == 'POST':
 		action, prof_id = request.POST['data'].split('.')
