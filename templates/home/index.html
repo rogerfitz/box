@@ -43,68 +43,68 @@
                             {% endfor %}
                         </tr>
                     </table>
-                {% else %}
-                   {% if user.profile.paid %}
-			<h3>{{ user.profile }}, thanks for ordering. You're personalized package will be delivered the 23rd of April. In the meantime, enjoy this gif. </h3>
+                {% endif %}
+
+            {% if user.profile.paid %}
+			<h3>{{ user.profile }}, thanks for ordering. You're personalized package will be delivered the 30th of April. In the meantime, enjoy this gif. </h3>
 			<div class="row text-center"><img src='http://media.giphy.com/media/76dXlFZZEqNH2/giphy.gif'></div>
-		   {% else %}
-			{% if user.profile.city == '' %}
-			<h3>Please add your shipping information</h3>
-			{% else %}
-			{% if count < 55 %}
-				{% if user.profile.city|lower == 'champaign' or user.profile.city|lower == 'urbana' %}
-					<p class="text">The Nice Package never dissapoints, we promise. Order yours by April 25th and it will be delievered the week of the 28th of April. Check out our extended <a href="{% url 'faq' %}">FAQ</a> and <a href="{% url 'about' %}">Our Story</a> for more information.</p><p>*Save with a two month plan! (Two months = two boxes. An $80 value)</p>
-				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-					<input type="hidden" name="cmd" value="_s-xclick">
-					<input type="hidden" name="hosted_button_id" value="JCQ37EHKW5SCS">
-					<table class="center">
-						<tr><td><input type="hidden" name="on0" value="Plan">Plan</td></tr><tr><td><select name="os0">
-							<option value="2 Months">2 Months $35.00 USD</option>
-							<option value="1 Month">1 Month $20.00 USD</option>
-						</select> </td></tr>
-					</table>
-					<input type="hidden" name="currency_code" value="USD">
-					<div class="form-actions">
-                        <button class="btn btn-lg btn-package-opposite" type="submit" style="margin-top:10px;"><span class="ss-creditcard ss-symbolicon-block social-icon" style="margin-right: 5px;"></span>Pay With PayPal</button>
-                    </div>
-				</form>
+		    {% else %}
+			     {% if user.profile.city == '' %}
+    			<h3>Please add your shipping information</h3>
+    			{% else %}
+        			{% if count < 55 %}
+        				{% if user.profile.city|lower == 'champaign' or user.profile.city|lower == 'urbana' %}
+        					<p class="text">The Nice Package never dissapoints, we promise. Order yours by April 25th and it will be delievered by the 30th of April. Check out our extended <a href="{% url 'faq' %}">FAQ</a> and <a href="{% url 'about' %}">Our Story</a> for more information.</p><p>*Save with a two month plan! (Two months = two boxes. An $80 value)</p>
+        				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        					<input type="hidden" name="cmd" value="_s-xclick">
+        					<input type="hidden" name="hosted_button_id" value="JCQ37EHKW5SCS">
+        					<table class="center">
+        						<tr><td><input type="hidden" name="on0" value="Plan">Plan</td></tr><tr><td><select name="os0">
+        							<option value="2 Months">2 Months $35.00 USD</option>
+        							<option value="1 Month">1 Month $20.00 USD</option>
+        						</select> </td></tr>
+        					</table>
+        					<input type="hidden" name="currency_code" value="USD">
+        					<div class="form-actions">
+                                <button class="btn btn-lg btn-package-opposite" type="submit" style="margin-top:10px;"><span class="ss-creditcard ss-symbolicon-block social-icon" style="margin-right: 5px;"></span>Pay With PayPal</button>
+                            </div>
+        				</form>
 
-				<h5>If you've already paid, we will add your payment to the system in one business day.</h5>
-				{% else %}
-				<p class="text">The Nice Package never dissapoints, we promise. Order yours by April 25th and it will be shipped the week of the 28th of April. Check out our extended <a href="{% url 'faq' %}">FAQ</a> and <a href="{% url 'about' %}">Our Story</a> for more information.</p><p>*Save with a two month plan! (Two months = two boxes. An $80 value)</p>
-				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-    				<input type="hidden" name="cmd" value="_s-xclick">
-    				<input type="hidden" name="hosted_button_id" value="ZTVGDP4GMBSB2">
-    				<table>
-    				<tr><td><input type="hidden" name="on0" value="Plan">Plan</td></tr><tr><td><select name="os0">
-    					<option value="2 Months">2 Months $35.00 USD</option>
-    					<option value="1 Month">1 Month $20.00 USD</option>
-    				</select> </td></tr>
-    				</table>
-    				<input type="hidden" name="currency_code" value="USD">
-                    <div class="form-actions">
-                        <button class="btn btn-lg btn-package-opposite" type="submit" style="margin-top:10px;"><span class="ss-creditcard ss-symbolicon-block social-icon" style="margin-right: 5px;"></span>Pay With PayPal</button>
-                    </div>
-				</form>
+        				<h5>If you've already paid, we will add your payment to the system in one business day.</h5>
+        				{% else %}
+            				<p class="text">The Nice Package never dissapoints, we promise. Order yours by April 25th and it will be shipped the 30th of April. Check out our extended <a href="{% url 'faq' %}">FAQ</a> and <a href="{% url 'about' %}">Our Story</a> for more information.</p><p>*Save with a two month plan! (Two months = two boxes. An $80 value)</p>
+            				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                				<input type="hidden" name="cmd" value="_s-xclick">
+                				<input type="hidden" name="hosted_button_id" value="ZTVGDP4GMBSB2">
+                				<table>
+                				<tr><td><input type="hidden" name="on0" value="Plan">Plan</td></tr><tr><td><select name="os0">
+                					<option value="2 Months">2 Months $35.00 USD</option>
+                					<option value="1 Month">1 Month $20.00 USD</option>
+                				</select> </td></tr>
+                				</table>
+                				<input type="hidden" name="currency_code" value="USD">
+                                <div class="form-actions">
+                                    <button class="btn btn-lg btn-package-opposite" type="submit" style="margin-top:10px;"><span class="ss-creditcard ss-symbolicon-block social-icon" style="margin-right: 5px;"></span>Pay With PayPal</button>
+                                </div>
+            				</form>
 
 
-				{% endif %}
-{% else %}
-                                <h3>Thanks for making an account. We are currently swamped with orders and are working on filling them. We will email you an access code as soon as we are ready for your business. Our current estimate is April.</h3>
-                                <br>
-                                <h5>If you already know your access code, enter it here!</h5>
-                                <form action="" method="post">
-                                    {% with access_form as form %}
-                                        {% include "include_form.html" %}
-                                    {% endwith %}
-                                    <div class="form-actions formButtons">
-                                        <button type="submit" class="btn btn-lg btn-package-opposite">Submit</button>
-                                    </div>
+            			{% endif %}
+                    {% else %}
+                        <h3>Thanks for making an account. We are currently swamped with orders and are working on filling them. We will email you an access code as soon as we are ready for your business. Our current estimate is April.</h3>
+                        <br>
+                        <h5>If you already know your access code, enter it here!</h5>
+                        <form action="" method="post">
+                        {% with access_form as form %}
+                            {% include "include_form.html" %}
+                        {% endwith %}
+                        <div class="form-actions formButtons">
+                            <button type="submit" class="btn btn-lg btn-package-opposite">Submit</button>
+                        </div>
                                 </form>
-                            {% endif %}
-                        {% endif %}
                     {% endif %}
                 {% endif %}
+            {% endif %}
             {% endwith %}
         </div>
         <div class="col-md-12">
