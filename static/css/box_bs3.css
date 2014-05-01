@@ -292,3 +292,6 @@ p {
 .text {
     font-size: 22px;
 }
+.boxReview {
+    width: 150px;
+}

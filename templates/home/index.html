@@ -6,43 +6,152 @@
         <div class="col-md-12">
             {% with box=user.profile.current_box %}
                 {% if box != None %}
-                    <h1 class='text-center'>Current Box</h1>
-                    <table border="1">
-                    	<tr>
-                            <td>Delivery Date</td>
-                        </tr>
-                        <tr>
-                            <td>{{ box.date_delivered }}</td>
-                            {% for p in box.products.all %}
-                              <td>
-                              	<a href={{ p.url }} target="_blank"><img src={{ p.image_url }} height="200" width="150"></a>
-                              </td>
-                            {% endfor %}
-                            <td>	
-                                <select onchange="getval(this);">
-                    	            <option>
-                                        <center>{% if box.feedback %}{{ box.feedback.all.0 }}{% else %}Review your box!{% endif %}</center>
-                                    </option>
-                    	            {% for option in boxFeedback %}
-                    	                <option value='box.{{ box.id }}.{{ option.0 }}'>{{ option.1 }}</option>
-                    	            {% endfor %}
-                    	        </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            {% for p in box.products.all %}
-                                <td>
-                              	    <select onchange="getval(this);">
-                            	        <option><center>{% if p.feedback %}{{ p.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
-                            	        {% for option in prodFeedback %}
-                            	            <option value='product.{{ p.id }}.{{ option.0 }}'>{{ option.1 }}</option>
-                            	        {% endfor %}
-                            	    </select>
-                                </td>
-                            {% endfor %}
-                        </tr>
-                    </table>
+                    <h1>Current Box</h1>
+                    <h3>Delivered On: {{ box.date_delivered }}</h3>
+                    {% with box.products.all as list %}
+                        <div class="col-md-12">
+                            <div class="col-md-3">
+                                <p><a href={{ list.0.url }} target="_blank"><img src={{ list.0.image_url }} height="200" width="150"></a></p>
+                                <p>
+                                    <select class="boxReview" onchange="getval(this);">
+                                        <option><center>{% if list.0.feedback %}{{ list.0.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                        {% for option in prodFeedback %}
+                                            <option value='product.{{ list.0.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><a href={{ list.1.url }} target="_blank"><img src={{ list.1.image_url }} height="200" width="150"></a></p>
+                                <p>
+                                    <select class="boxReview" onchange="getval(this);">
+                                        <option><center>{% if list.1.feedback %}{{ list.1.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                        {% for option in prodFeedback %}
+                                            <option value='product.{{ list.1.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><a href={{ list.2.url }} target="_blank"><img src={{ list.2.image_url }} height="200" width="150"></a></p>
+                                <p>
+                                    <select class="boxReview" onchange="getval(this);">
+                                        <option><center>{% if list.2.feedback %}{{ list.2.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                        {% for option in prodFeedback %}
+                                            <option value='product.{{ list.2.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><a href={{ list.3.url }} target="_blank"><img src={{ list.3.image_url }} height="200" width="150"></a></p>
+                                <p>
+                                    <select class="boxReview" onchange="getval(this);">
+                                        <option><center>{% if list.3.feedback %}{{ list.3.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                        {% for option in prodFeedback %}
+                                            <option value='product.{{ list.3.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </p>
+                            </div>
+                        </div>
+                        {% if list.count > 4 %}
+                            <div class="col-md-12">
+                                <div class="col-md-3">
+                                    <p><a href={{ list.4.url }} target="_blank"><img src={{ list.4.image_url }} height="200" width="150"></a></p>
+                                    <p>
+                                    <select class="boxReview" onchange="getval(this);">
+                                        <option><center>{% if list.4.feedback %}{{ list.4.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                        {% for option in prodFeedback %}
+                                            <option value='product.{{ list.4.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p><a href={{ list.5.url }} target="_blank"><img src={{ list.5.image_url }} height="200" width="150"></a></p>
+                                    <p>
+                                    <select class="boxReview" onchange="getval(this);">
+                                        <option><center>{% if list.5.feedback %}{{ list.5.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                        {% for option in prodFeedback %}
+                                            <option value='product.{{ list.5.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p><a href={{ list.6.url }} target="_blank"><img src={{ list.6.image_url }} height="200" width="150"></a></p>
+                                    <p>
+                                    <select class="boxReview" onchange="getval(this);">
+                                        <option><center>{% if list.6.feedback %}{{ list.6.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                        {% for option in prodFeedback %}
+                                            <option value='product.{{ list.6.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p><a href={{ list.7.url }} target="_blank"><img src={{ list.7.image_url }} height="200" width="150"></a></p>
+                                    <p>
+                                    <select class="boxReview" onchange="getval(this);">
+                                        <option><center>{% if list.7.feedback %}{{ list.7.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                        {% for option in prodFeedback %}
+                                            <option value='product.{{ list.7.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </p>
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if list.count > 8 %}
+                            <div class="col-md-12">
+                                <div class="col-md-3">
+                                    <p><a href={{ list.8.url }} target="_blank"><img src={{ list.8.image_url }} height="200" width="150"></a></p>
+                                    <p>
+                                    <select class="boxReview" onchange="getval(this);">
+                                        <option><center>{% if list.8.feedback %}{{ list.8.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                        {% for option in prodFeedback %}
+                                            <option value='product.{{ list.8.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p><a href={{ list.9.url }} target="_blank"><img src={{ list.9.image_url }} height="200" width="150"></a></p>
+                                    <p>
+                                    <select class="boxReview" onchange="getval(this);">
+                                        <option><center>{% if list.9.feedback %}{{ list.9.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                        {% for option in prodFeedback %}
+                                            <option value='product.{{ list.9.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p><a href={{ list.10.url }} target="_blank"><img src={{ list.10.image_url }} height="200" width="150"></a></p>
+                                    <p>
+                                    <select class="boxReview" onchange="getval(this);">
+                                        <option><center>{% if list.10.feedback %}{{ list.10.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                        {% for option in prodFeedback %}
+                                            <option value='product.{{ list.10.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </p>
+                                </div>
+                                <div class="col-md-3">
+                                    <p><a href={{ list.11.url }} target="_blank"><img src={{ list.11.image_url }} height="200" width="150"></a></p>
+                                    <p>
+                                    <select class="boxReview" onchange="getval(this);">
+                                        <option><center>{% if list.11.feedback %}{{ list.11.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                        {% for option in prodFeedback %}
+                                            <option value='product.{{ list.11.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </p>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endwith %}
                 {% endif %}
 
             {% if user.profile.paid %}
@@ -105,61 +214,156 @@
                     {% endif %}
                 {% endif %}
             {% endif %}
-            {% endwith %}
+        {% endwith %}
         </div>
         <div class="col-md-12">
             {% if user.profile.boxes.all %}
                 <h1 class='text-center'><br><br>Past Boxes</h1>
-                {% for box in user.profile.boxes.all %}
-                    <table border="1">
-            	        <tr>
-                            <td>Delivery Date</td>
-                        </tr>
-                        <tr>
-                            <td>{{ box.date_delivered }}</td>
-                            {% for p in box.products.all %}
-                                <td>
-                              	    <a href={{ p.url }} target="_blank"><img src={{ p.image_url }} height="200" width="150"></a>
-                                </td>
-                            {% endfor %}  
-                            <td>	<!-- Add buttons later
-                                    <button type="button" class="btn btn-default btn-lg" id="up">
-                                	  <i class="fa fa-thumbs-up fa-lg"></i>
-                                	</button>
-                                	<button type="button" class="btn btn-default btn-lg">
-                                	  <i class="fa fa-angle-up fa-lg"><a href="#"></a></i>
-                                	</button>
-                                	<button type="button" class="btn btn-default btn-lg">
-                                	  <i class="fa fa-thumbs-down fa-lg"></i>
-                                	</button>-->
-            	                <select onchange="getval(this);">
-            	  
-            	                    <option>
-                                        <center>{% if box.feedback %}{{ box.feedback.all.0 }}{% else %}Review your box!{% endif %}</center>
-                                    </option>
-            	                    {% for option in boxFeedback %}
-            	                        <option value='box.{{ box.id }}.{{ option.0 }}'>{{ option.1 }}</option>
-            	                    {% endfor %}
-            	                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            {% for p in box.products.all %}
-                                <td>
-                              	    <select onchange="getval(this);">
-                            	        <option>
-                                            <center>{% if p.feedback %}{{ p.feedback.all.0 }}{% else %}Review Product{% endif %}</center>
-                                        </option>
-                            	        {% for option in prodFeedback %}
-                            	           <option value='product.{{ p.id }}.{{ option.0 }}'>{{ option.1 }}</option>
-                            	        {% endfor %}
-                            	    </select>
-                                </td>
-                            {% endfor %}
-                        </tr>
-                    </table>
-                {% endfor %}
+                <h3>Delivered On: {{ box.date_delivered }}</h3>
+                {% with box.products.all as list %}
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                            <p><a href={{ list.0.url }} target="_blank"><img src={{ list.0.image_url }} height="200" width="150"></a></p>
+                            <p>
+                                <select class="boxReview" onchange="getval(this);">
+                                    <option><center>{% if list.0.feedback %}{{ list.0.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                    {% for option in prodFeedback %}
+                                        <option value='product.{{ list.0.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                    {% endfor %}
+                                </select>
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p><a href={{ list.1.url }} target="_blank"><img src={{ list.1.image_url }} height="200" width="150"></a></p>
+                            <p>
+                                <select class="boxReview" onchange="getval(this);">
+                                    <option><center>{% if list.1.feedback %}{{ list.1.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                    {% for option in prodFeedback %}
+                                        <option value='product.{{ list.1.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                    {% endfor %}
+                                </select>
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p><a href={{ list.2.url }} target="_blank"><img src={{ list.2.image_url }} height="200" width="150"></a></p>
+                            <p>
+                                <select class="boxReview" onchange="getval(this);">
+                                    <option><center>{% if list.2.feedback %}{{ list.2.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                    {% for option in prodFeedback %}
+                                        <option value='product.{{ list.2.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                    {% endfor %}
+                                </select>
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p><a href={{ list.3.url }} target="_blank"><img src={{ list.3.image_url }} height="200" width="150"></a></p>
+                            <p>
+                                <select class="boxReview" onchange="getval(this);">
+                                    <option><center>{% if list.3.feedback %}{{ list.3.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                    {% for option in prodFeedback %}
+                                        <option value='product.{{ list.3.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                    {% endfor %}
+                                </select>
+                            </p>
+                        </div>
+                    </div>
+                    {% if list.count > 4 %}
+                        <div class="col-md-12">
+                            <div class="col-md-3">
+                                <p><a href={{ list.4.url }} target="_blank"><img src={{ list.4.image_url }} height="200" width="150"></a></p>
+                                <p>
+                                <select class="boxReview" onchange="getval(this);">
+                                    <option><center>{% if list.4.feedback %}{{ list.4.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                    {% for option in prodFeedback %}
+                                        <option value='product.{{ list.4.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                    {% endfor %}
+                                </select>
+                            </p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><a href={{ list.5.url }} target="_blank"><img src={{ list.5.image_url }} height="200" width="150"></a></p>
+                                <p>
+                                <select class="boxReview" onchange="getval(this);">
+                                    <option><center>{% if list.5.feedback %}{{ list.5.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                    {% for option in prodFeedback %}
+                                        <option value='product.{{ list.5.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                    {% endfor %}
+                                </select>
+                            </p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><a href={{ list.6.url }} target="_blank"><img src={{ list.6.image_url }} height="200" width="150"></a></p>
+                                <p>
+                                <select class="boxReview" onchange="getval(this);">
+                                    <option><center>{% if list.6.feedback %}{{ list.6.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                    {% for option in prodFeedback %}
+                                        <option value='product.{{ list.6.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                    {% endfor %}
+                                </select>
+                            </p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><a href={{ list.7.url }} target="_blank"><img src={{ list.7.image_url }} height="200" width="150"></a></p>
+                                <p>
+                                <select class="boxReview" onchange="getval(this);">
+                                    <option><center>{% if list.7.feedback %}{{ list.7.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                    {% for option in prodFeedback %}
+                                        <option value='product.{{ list.7.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                    {% endfor %}
+                                </select>
+                            </p>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if list.count > 8 %}
+                        <div class="col-md-12">
+                            <div class="col-md-3">
+                                <p><a href={{ list.8.url }} target="_blank"><img src={{ list.8.image_url }} height="200" width="150"></a></p>
+                                <p>
+                                <select class="boxReview" onchange="getval(this);">
+                                    <option><center>{% if list.8.feedback %}{{ list.8.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                    {% for option in prodFeedback %}
+                                        <option value='product.{{ list.8.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                    {% endfor %}
+                                </select>
+                            </p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><a href={{ list.9.url }} target="_blank"><img src={{ list.9.image_url }} height="200" width="150"></a></p>
+                                <p>
+                                <select class="boxReview" onchange="getval(this);">
+                                    <option><center>{% if list.9.feedback %}{{ list.9.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                    {% for option in prodFeedback %}
+                                        <option value='product.{{ list.9.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                    {% endfor %}
+                                </select>
+                            </p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><a href={{ list.10.url }} target="_blank"><img src={{ list.10.image_url }} height="200" width="150"></a></p>
+                                <p>
+                                <select class="boxReview" onchange="getval(this);">
+                                    <option><center>{% if list.10.feedback %}{{ list.10.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                    {% for option in prodFeedback %}
+                                        <option value='product.{{ list.10.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                    {% endfor %}
+                                </select>
+                            </p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><a href={{ list.11.url }} target="_blank"><img src={{ list.11.image_url }} height="200" width="150"></a></p>
+                                <p>
+                                <select class="boxReview" onchange="getval(this);">
+                                    <option><center>{% if list.11.feedback %}{{ list.11.feedback.all.0 }}{% else %}Review Product{% endif %}</center></option>
+                                    {% for option in prodFeedback %}
+                                        <option value='product.{{ list.11.id }}.{{ option.0 }}'>{{ option.1 }}</option>
+                                    {% endfor %}
+                                </select>
+                            </p>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endwith %}
             {% endif %}
         </div>
     </div>
