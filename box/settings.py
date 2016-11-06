@@ -191,7 +191,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp-mail.outlook.com'
 EMAIL_PORT = '587'
 EMAIL_HOST_USER = 'no-reply@thenicepackage.com' #bulk sender
-EMAIL_HOST_PASSWORD = 'N!cepackage!'
+EMAIL_HOST_PASSWORD = ''
 
 MANDRILL_API_KEY = 'qjV03oxSZLpY9wq8uGhhSw'
 
